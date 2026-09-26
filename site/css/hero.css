@@ -124,6 +124,13 @@
 .skip-intro span { font-size: 16px; line-height: 1; }
 @media (max-width: 720px) {
   .intro-controls { left: auto; right: var(--gutter); top: calc(env(safe-area-inset-top, 0px) + 86px); bottom: auto; gap: 10px; }
+  /* Keep each control on one line on narrow phones. */
+  .intro-controls__play, .skip-intro { white-space: nowrap; }
+  .intro-controls .mono { letter-spacing: .08em; }
+}
+@media (max-width: 400px) {
+  .intro-controls { gap: 6px; font-size: 11px; }
+  .intro-controls .mono { font-size: 11px; letter-spacing: .04em; }
 }
 /* Without scroll animation there is nothing to "watch". */
 @media (prefers-reduced-motion: reduce) {

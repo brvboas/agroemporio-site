@@ -174,6 +174,7 @@ Search and replace `https://agroemporio.com` in `site/index.html`, `site/robots.
 | I want to change… | Edit |
 |-------------------|------|
 | Any text on the page | `site/index.html`. Each section is marked with a comment banner. |
+| Any CSS or JS file | That file, then bump the `?v=` number on its `<link>`/`<script>` tags in `index.html`, so browsers that cached the old version load the new one. |
 | Header "Disk entrega" button, phone numbers | `site/index.html` (search for `tel:`). |
 | Opening hours, phone, address | The **store label** table in `index.html` **and** the JSON-LD block in `<head>`, so Google gets the same data. |
 | Colours or fonts | `site/css/tokens.css` |

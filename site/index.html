@@ -47,12 +47,14 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=DM+Serif+Display:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Reenie+Beanie&display=swap">
 
   <!-- Styles (see README → Project structure) -->
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/hero.css">
-  <link rel="stylesheet" href="css/chapters.css">
-  <link rel="stylesheet" href="css/contact.css">
+  <!-- ?v= is a cache buster: change it on every deploy that edits CSS or JS, so
+       phones never mix a new page with old cached styles or scripts. -->
+  <link rel="stylesheet" href="css/tokens.css?v=2026092602">
+  <link rel="stylesheet" href="css/base.css?v=2026092602">
+  <link rel="stylesheet" href="css/components.css?v=2026092602">
+  <link rel="stylesheet" href="css/hero.css?v=2026092602">
+  <link rel="stylesheet" href="css/chapters.css?v=2026092602">
+  <link rel="stylesheet" href="css/contact.css?v=2026092602">
 
   <!-- Without JavaScript the loader is pointless: hide it right away. -->
   <noscript><style>.loader { display: none; }</style></noscript>
@@ -469,7 +471,7 @@
         <div class="credit">
           <div class="credit__item">
             <button class="credit__toggle" type="button" data-popover aria-expanded="false" aria-controls="credit-menu">
-              <img class="credit__head" src="assets/img/credit/bruno-head.webp" alt="" width="216" height="240" loading="lazy" decoding="async">
+              <img class="credit__head" src="assets/img/credit/bruno-head.webp?v=2026092602" alt="" width="216" height="240" loading="lazy" decoding="async">
               <span class="mono">by Bruno Villas Boas</span>
             </button>
             <ul class="credit__menu" id="credit-menu" hidden>
@@ -503,12 +505,12 @@
 
   <!-- Classic deferred scripts (order matters): they share the window.Emporio
        namespace, so the page also works when opened directly from disk. -->
-  <script defer src="js/config.js"></script>
-  <script defer src="js/utils.js"></script>
-  <script defer src="js/goat-sequence.js"></script>
-  <script defer src="js/hero.js"></script>
-  <script defer src="js/scroll-effects.js"></script>
-  <script defer src="js/extras.js"></script>
-  <script defer src="js/main.js"></script>
+  <script defer src="js/config.js?v=2026092602"></script>
+  <script defer src="js/utils.js?v=2026092602"></script>
+  <script defer src="js/goat-sequence.js?v=2026092602"></script>
+  <script defer src="js/hero.js?v=2026092602"></script>
+  <script defer src="js/scroll-effects.js?v=2026092602"></script>
+  <script defer src="js/extras.js?v=2026092602"></script>
+  <script defer src="js/main.js?v=2026092602"></script>
 </body>
 </html>

@@ -20,6 +20,8 @@
       this.section = $('#hero');
       this.lines = $$('.hero__line');
       this.scrollHint = $('.scroll-hint');
+      this.introControls = $('.intro-controls');
+      this.endHint = $('.scroll-hint--end');
       this.wipe = $('.hero__wipe');
       this.seal = $('.hero__seal');
       this.outro = $('.hero__outro');
@@ -83,6 +85,12 @@
           `rotate(${(1 - entered) * direction * 2}deg)`;
       });
       this.scrollHint.style.opacity = 1 - segment(p, ...T.scrollHintFade);
+      // The intro controls fade out once the outro starts (and stop being clickable).
+      const controlsVisible = 1 - segment(p, ...T.skipFade);
+      this.introControls.style.opacity = controlsVisible;
+      this.introControls.style.visibility = controlsVisible > 0.01 ? 'visible' : 'hidden';
+      // On the final frame, a hint invites the visitor to keep scrolling.
+      this.endHint.style.opacity = easeOut(segment(p, ...T.endHint));
 
       // 4. Outro: green circle, logo drawing, seal stamp, brand line.
       this.wipe.style.clipPath = `circle(${easeInOut(segment(p, ...T.wipe)) * 110}% at 50% 62%)`;

@@ -46,7 +46,7 @@
 /* --------------------------------------------------------------------------
    Contact
    -------------------------------------------------------------------------- */
-.contact { position: relative; overflow: hidden; padding: 150px var(--gutter) 60px; color: var(--color-straw); background: var(--color-pasture); }
+.contact { position: relative; overflow: hidden; padding: 110px var(--gutter) 110px; /* bottom room so the floating WhatsApp never covers the credit */ color: var(--color-straw); background: var(--color-pasture); }
 .contact-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); align-items: start; gap: clamp(30px, 5vw, 90px); }
 .contact-grid h2 { font-size: clamp(70px, 11vw, 190px); color: var(--color-paper); }
 .contact-grid h2 .highlight { font-size: .7em; }
@@ -132,5 +132,121 @@
 }
 .site-footer img { width: 84px; }
 .site-footer .mono { opacity: .75; }
-.site-footer .credit a { text-underline-offset: 4px; text-decoration-color: var(--color-red); }
-.site-footer .credit a:hover { color: #fff; }
+
+/* Author credit: 3D figure head + "by Bruno Villas Boas", opens a links menu. */
+.credit { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.credit__item { position: relative; }
+.credit__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 10px 4px 4px;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.credit__toggle .mono { font-size: 11px; opacity: .75; transition: opacity .2s; }
+.site-footer .credit__head { width: 50px; height: auto; transform-origin: 50% 90%; transition: transform .3s var(--ease-spring); }
+/* On hover the head nods along to the music in the headphones. */
+.credit__toggle:hover .credit__head,
+.credit__toggle[aria-expanded="true"] .credit__head { animation: credit-nod .6s ease-in-out infinite alternate; }
+.credit__toggle:hover .mono,
+.credit__toggle[aria-expanded="true"] .mono { opacity: 1; }
+@keyframes credit-nod {
+  from { transform: rotate(-6deg) translateY(0); }
+  to   { transform: rotate(5deg) translateY(-2px); }
+}
+
+/* Links menu: paper card popping up above the button. */
+.credit__menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 12px);
+  z-index: 20;
+  display: grid;
+  gap: 2px;
+  min-width: 190px;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border: 2px solid var(--color-ink);
+  box-shadow: 5px 5px 0 var(--color-red);
+  transform: rotate(-1.5deg);
+  transform-origin: 80% 100%;
+  animation: credit-pop .22s var(--ease-spring);
+}
+.credit__menu[hidden] { display: none; }
+.credit__menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.credit__menu a:hover, .credit__menu a:focus-visible { background: var(--color-straw); }
+.credit__menu svg { width: 22px; height: 22px; flex: none; fill: var(--color-pasture); }
+@keyframes credit-pop {
+  from { opacity: 0; transform: rotate(-1.5deg) translateY(8px) scale(.94); }
+  to   { opacity: 1; transform: rotate(-1.5deg); }
+}
+@media (max-width: 600px) { .credit__menu { right: auto; left: 0; transform-origin: 20% 100%; } }
+@media (prefers-reduced-motion: reduce) {
+  .credit__toggle .credit__head { animation: none !important; }
+  .credit__menu { animation: none; }
+}
+
+
+/* "Inspiração": small lamp link under the credit that opens a note about the design. */
+.inspiration__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 4px;
+  padding: 4px 6px;
+  font-size: 11px;
+  color: var(--color-straw);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  opacity: .7;
+  transition: opacity .2s;
+}
+.inspiration__toggle:hover,
+.inspiration__toggle[aria-expanded="true"] { opacity: 1; }
+.inspiration__bulb { width: 18px; height: 18px; overflow: visible; }
+.inspiration__bulb path { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+/* The bulb lights up when hovered or open. */
+.inspiration__bulb .bulb-glass { transition: fill .25s, filter .25s; }
+.inspiration__toggle:hover .bulb-glass,
+.inspiration__toggle[aria-expanded="true"] .bulb-glass { fill: #F2C94C; stroke: #F2C94C; filter: drop-shadow(0 0 6px rgba(242, 201, 76, .8)); }
+
+.inspiration__note {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 12px);
+  z-index: 20;
+  width: min(420px, calc(100vw - 2 * var(--gutter)));
+  padding: 20px 22px 16px;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border: 2px solid var(--color-ink);
+  box-shadow: 6px 6px 0 var(--color-red);
+  transform: rotate(-1deg);
+  transform-origin: 80% 100%;
+  animation: credit-pop .22s var(--ease-spring);
+}
+.inspiration__note[hidden] { display: none; }
+.inspiration__note .mono { display: block; margin-bottom: 10px; color: var(--color-red); }
+.inspiration__note p { margin: 0 0 10px; font-size: 15px; line-height: 1.5; }
+.inspiration__note .hand { display: block; text-align: right; font-size: 30px; color: #2D4FA0; }
+@media (max-width: 600px) { .inspiration__note { right: auto; left: 0; transform-origin: 20% 100%; } }
+@media (prefers-reduced-motion: reduce) { .inspiration__note { animation: none; } }

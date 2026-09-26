@@ -161,6 +161,18 @@
         <div class="hero__line hero__line--4"><p class="display">E quando alguém fica doente,</p><span class="serif">a gente tem a maior farmácia veterinária da região.</span></div>
 
         <div class="scroll-hint"><span class="mono">role devagar · ela está mastigando</span><i></i></div>
+        <!-- Shown on the final frame (logo + seal): invites the visitor to keep scrolling. -->
+        <div class="scroll-hint scroll-hint--end" aria-hidden="true"><span class="mono">continue rolando · tem mais loja aqui embaixo</span><i></i></div>
+        <!-- Intro controls: watch the opening hands-free, or skip it (js/extras.js → initIntroAutoplay). -->
+        <div class="intro-controls">
+          <button class="intro-controls__play mono" type="button" aria-pressed="false">
+            <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+            <span class="intro-controls__label">assistir abertura</span>
+          </button>
+          <span class="intro-controls__sep" aria-hidden="true">·</span>
+          <a class="skip-intro mono" href="#campo">pular abertura <span aria-hidden="true">↓</span></a>
+        </div>
 
         <div class="hero__wipe"></div>
         <svg class="hero__animals" viewBox="0 0 1160 732" aria-hidden="true"><path id="hero-animals-path" fill-rule="evenodd" d="M747 611 L743 609 L734 616 L723 620 L720 628 L720 636 L734 637 L745 642 L741 627 L747 616Z M154 577 L150 577 L140 582 L145 583Z M790 553 L790 556 L797 562 L806 574 L823 591 L825 591 L825 589Z M124 565 L150 565 L160 560 L171 550 L171 547 L167 545 L141 545 L135 548 L126 557Z M447 523 L440 531 L438 536 L436 563 L430 594 L431 616 L438 638 L446 654 L482 710 L483 721 L486 723 L495 723 L498 721 L505 708 L507 691 L503 687 L484 682 L468 668 L446 636 L441 619 L440 587 L444 558 L445 537 L451 526Z M1010 456 L997 460 L991 468 L991 479 L1000 487 L1010 486 L1019 482 L1021 479 L1021 464 L1018 460Z M1108 454 L1110 480 L1114 488 L1122 489 L1135 482 L1139 486 L1140 494 L1153 485 L1159 472 L1159 465 L1151 455 L1138 451 L1113 451Z M587 443 L578 440 L564 440 L548 444 L535 453 L508 484 L483 518 L476 533 L475 548 L478 563 L482 570 L484 579 L493 590 L498 590 L528 558 L529 554 L546 528 L583 478 L592 459 L592 449Z M1082 392 L1078 392 L1054 413 L1040 433 L1031 455 L1030 473 L1026 480 L1026 485 L1031 496 L1054 528 L1058 528 L1070 521 L1108 518 L1122 501 L1120 499 L1109 497 L1101 488 L1097 463 L1098 451 L1100 447 L1107 442 L1117 440 L1147 440 L1147 436 L1136 429 L1128 428 L1112 420Z M920 344 L920 347 L937 359 L946 362 L957 362 L962 359 L956 354 L952 346 L949 344 L933 342Z M1013 494 L1011 492 L994 488 L983 475 L971 468 L965 467 L937 453 L928 451 L917 445 L908 443 L897 437 L871 428 L800 396 L775 379 L758 361 L750 348 L745 335 L738 326 L733 327 L726 332 L702 343 L687 347 L676 347 L675 349 L682 349 L687 353 L696 384 L710 414 L711 420 L717 430 L726 456 L750 503 L755 508 L755 506 L759 503 L771 505 L780 516 L782 535 L801 542 L815 543 L823 546 L834 555 L834 565 L837 572 L844 578 L852 578 L854 581 L837 592 L827 593 L833 600 L834 607 L820 623 L818 623 L788 591 L785 585 L780 582 L778 577 L773 574 L772 570 L756 553 L754 547 L750 545 L751 549 L757 554 L758 558 L767 569 L774 575 L775 579 L796 601 L798 606 L802 608 L810 617 L814 624 L814 630 L798 648 L780 675 L751 700 L737 708 L694 716 L656 713 L653 710 L653 702 L646 684 L642 665 L645 642 L641 640 L638 643 L634 656 L632 721 L635 723 L650 723 L656 728 L664 730 L682 731 L724 723 L743 714 L755 706 L780 684 L794 665 L813 633 L833 614 L841 600 L851 591 L870 582 L874 573 L878 569 L943 564 L957 557 L965 540 L965 534 L962 532 L924 529 L921 526 L921 522 L925 518 L936 515 L957 517 L967 520 L972 529 L1028 529 L1028 525 L1016 505Z M808 288 L804 293 L802 302 L803 320 L806 333 L813 348 L821 357 L833 359 L840 354 L840 349 L836 348 L827 339 L820 325 L817 302 L822 290 L817 287Z M165 284 L166 289 L171 294 L191 295 L200 289 L202 280 L200 276 L193 272 L181 271 L172 274Z M761 304 L760 311 L767 327 L774 337 L792 355 L815 371 L820 372 L831 379 L839 381 L846 386 L855 389 L860 393 L869 396 L876 401 L914 419 L917 419 L947 434 L953 435 L965 442 L971 443 L994 454 L1002 451 L1012 451 L1014 439 L1030 408 L1043 392 L1060 378 L1060 374 L1043 356 L1024 324 L1023 311 L1028 296 L1027 288 L1021 281 L1014 279 L1003 272 L985 270 L988 270 L1011 282 L1015 286 L1015 291 L1012 295 L1004 296 L1000 293 L998 293 L998 295 L1006 306 L1015 325 L1031 345 L1031 348 L1022 356 L1004 364 L1000 364 L996 359 L996 342 L992 334 L987 332 L976 334 L961 333 L956 331 L948 323 L938 309 L938 306 L941 303 L946 302 L950 298 L950 294 L942 289 L917 289 L910 295 L900 300 L884 303 L873 302 L863 296 L859 291 L857 272 L844 254 L842 248 L842 232 L846 226 L851 223 L864 222 L879 224 L896 233 L927 254 L951 265 L956 269 L974 276 L979 272 L979 270 L970 269 L939 255 L896 227 L873 218 L856 218 L841 225 L830 242 L825 254 L817 263 L810 267 L790 273Z M901 338 L906 334 L923 332 L949 333 L976 358 L978 364 L977 369 L973 372 L967 373 L940 372 L914 356 L902 343Z M805 278 L818 277 L827 280 L835 288 L840 297 L837 302 L827 302 L829 319 L835 333 L840 336 L844 332 L848 332 L852 341 L850 356 L839 367 L833 369 L823 369 L814 365 L806 355 L797 337 L792 315 L792 297 L796 285Z M472 196 L468 202 L467 213 L470 305 L469 309 L459 319 L455 320 L438 333 L437 346 L447 378 L450 381 L454 393 L461 404 L473 414 L484 415 L496 410 L505 398 L509 382 L510 356 L515 338 L521 333 L536 326 L551 314 L553 311 L553 299 L544 281 L505 226 L481 200Z M403 187 L379 227 L367 239 L353 249 L352 252 L362 251 L373 246 L388 232 L396 221 L404 198Z M299 147 L300 153 L315 167 L320 169 L330 167 L341 157 L343 152 L342 143 L339 140 L330 138 L304 140Z M313 146 L318 149 L318 151 L314 154 L310 151 L310 148Z M304 128 L308 131 L315 129 L334 130 L334 127 L331 124 L308 124Z M420 64 L414 81 L407 88 L394 91 L391 94 L393 97 L400 98 L403 101 L403 112 L407 112 L411 107 L413 95 L420 78Z M405 0 L399 0 L397 2 L389 21 L378 36 L353 48 L347 48 L343 44 L341 39 L317 7 L311 1 L307 1 L299 26 L297 38 L297 51 L301 65 L284 77 L248 110 L243 121 L242 130 L239 137 L170 219 L134 254 L126 267 L125 275 L126 284 L131 292 L142 323 L157 334 L175 339 L189 339 L202 333 L242 303 L262 295 L277 293 L292 287 L306 286 L341 278 L349 278 L358 286 L365 299 L367 311 L382 351 L383 361 L386 366 L391 387 L398 405 L398 410 L405 429 L411 457 L411 468 L406 487 L391 520 L375 573 L373 604 L370 605 L365 600 L341 565 L310 529 L310 501 L305 476 L301 464 L281 429 L280 424 L273 412 L269 398 L265 392 L257 398 L251 409 L246 458 L240 480 L232 490 L229 490 L216 482 L196 465 L184 452 L174 445 L166 442 L159 443 L156 446 L157 484 L163 500 L163 505 L159 508 L136 515 L122 524 L110 537 L104 550 L99 556 L81 562 L37 584 L30 585 L9 594 L0 604 L2 614 L16 636 L21 641 L22 645 L39 661 L70 676 L92 676 L111 670 L126 668 L147 669 L154 675 L179 720 L184 724 L187 723 L187 720 L178 704 L180 699 L207 703 L217 707 L263 712 L338 707 L350 703 L349 701 L341 700 L333 696 L317 692 L310 688 L307 689 L312 696 L311 700 L291 704 L261 704 L236 701 L216 696 L214 694 L217 691 L263 683 L271 678 L231 685 L191 685 L184 684 L180 681 L185 678 L202 676 L225 668 L255 652 L273 638 L286 623 L293 606 L294 596 L291 586 L289 590 L289 601 L287 608 L280 621 L263 639 L243 653 L211 668 L185 673 L164 672 L152 664 L142 660 L117 662 L92 670 L76 670 L71 664 L70 659 L72 651 L77 642 L89 632 L122 616 L133 614 L148 608 L165 606 L182 600 L200 598 L214 593 L193 593 L161 600 L145 601 L133 604 L124 603 L117 600 L115 596 L119 592 L135 586 L135 584 L116 584 L112 582 L108 576 L109 563 L118 545 L135 528 L146 522 L167 516 L191 516 L204 504 L215 499 L256 500 L264 496 L264 493 L254 481 L252 475 L255 463 L255 419 L259 406 L264 408 L266 418 L287 454 L296 476 L301 502 L301 512 L296 534 L326 564 L350 597 L365 623 L373 641 L374 660 L384 676 L404 699 L407 714 L421 723 L448 723 L448 720 L429 698 L397 654 L383 629 L381 618 L382 597 L385 595 L386 609 L391 627 L416 668 L423 677 L426 677 L421 664 L417 639 L417 599 L420 580 L422 545 L429 513 L437 501 L454 482 L446 481 L437 484 L424 498 L414 515 L402 544 L398 548 L398 556 L391 567 L389 563 L396 547 L397 537 L411 505 L413 495 L420 479 L421 449 L413 425 L412 417 L405 400 L404 390 L398 377 L387 339 L382 329 L378 312 L379 298 L377 286 L381 275 L404 245 L412 230 L418 213 L419 182 L416 173 L413 172 L413 205 L405 223 L383 248 L363 263 L338 272 L285 281 L272 286 L259 288 L224 305 L192 328 L183 330 L182 324 L170 328 L158 327 L149 318 L145 310 L144 293 L134 285 L132 280 L133 270 L141 258 L157 242 L172 231 L188 214 L190 215 L186 223 L143 264 L141 269 L143 275 L147 275 L158 270 L176 259 L198 259 L207 255 L218 247 L238 227 L267 210 L294 202 L318 199 L329 194 L329 192 L322 189 L295 184 L281 173 L279 166 L281 132 L296 115 L305 111 L310 111 L341 122 L356 121 L360 112 L357 93 L349 79 L346 76 L340 75 L324 78 L313 84 L304 85 L290 92 L286 92 L285 88 L296 78 L312 68 L329 61 L368 62 L371 65 L368 95 L370 98 L374 98 L377 93 L377 72 L382 47 L395 26 L398 18 L403 12 L406 12 L412 18 L420 38 L426 43 L429 51 L430 77 L422 95 L421 107 L423 116 L427 115 L430 101 L432 99 L439 99 L452 107 L474 127 L498 158 L540 223 L599 289 L654 356 L656 598 L667 598 L672 591 L687 584 L715 582 L722 578 L718 574 L707 570 L702 566 L698 552 L715 545 L719 541 L720 517 L723 512 L729 514 L734 521 L735 526 L742 533 L746 541 L749 542 L741 531 L739 525 L733 519 L733 516 L717 489 L708 466 L702 456 L701 449 L694 436 L693 429 L686 415 L685 407 L679 395 L677 384 L670 368 L667 352 L670 349 L641 322 L618 294 L621 291 L635 295 L661 295 L667 289 L675 287 L676 285 L666 280 L649 278 L630 263 L628 259 L630 255 L647 251 L649 249 L648 248 L611 245 L589 240 L586 237 L588 234 L593 232 L605 231 L620 226 L612 221 L586 216 L576 211 L578 208 L589 206 L602 201 L567 196 L552 191 L555 187 L578 183 L578 180 L570 168 L572 163 L594 161 L596 158 L586 153 L578 145 L576 140 L572 139 L549 123 L516 96 L505 84 L505 82 L508 79 L511 79 L512 76 L473 53 L454 47 L440 47 L437 44 L440 38 L453 35 L458 32 L432 31 L426 20 L426 17 L432 13 L421 12Z M388 581 L389 589 L386 592 L385 586 L386 582Z M257 126 L261 136 L259 145 L227 172 L217 186 L204 199 L202 199 L202 195 L240 153 L248 141 L250 129 L254 125Z M310 14 L316 18 L334 45 L334 50 L332 52 L321 55 L312 60 L307 59 L304 52 L304 30 L306 21Z"/></svg>
@@ -265,26 +277,26 @@
     <section class="chapter chapter--pet" id="pet">
       <div class="chapter__ghost" data-ghost aria-hidden="true">Pet · Pet · Pet · Pet</div>
       <div class="chapter__head"><span class="label-tag mono"><b>Cap. 3</b> Pet e pequeno porte</span></div>
+      <!-- Editorial grid: headline beside the cat, dog + aisle photos below,
+           copy and the counter note tucked under the aisle (see chapters.css). -->
       <div class="pet-grid">
-        <h2 class="display reveal">Cão, gato e aquele que dorme na sua cama.<small>Pequeno porte, mas quem manda na casa é ele.</small></h2>
+        <h2 class="pet-grid__title display reveal">Cão, gato e aquele que dorme na sua cama.<small>Pequeno porte, mas quem manda na casa é ele.</small></h2>
+        <figure class="photo photo--framed pet-grid__cat" data-speed="0.08" data-parallax>
+          <img src="assets/img/photos/cat.webp" alt="Gato cinza de olhos amarelos encarando a câmera no corredor da loja" width="1100" height="1100" loading="lazy" decoding="async">
+          <figcaption>fiscal do estoque</figcaption>
+        </figure>
+        <figure class="photo photo--framed pet-grid__dog" data-speed="-0.06" data-parallax>
+          <img src="assets/img/photos/dog.webp" alt="Cachorro vira-lata caramelo sentado no feno olhando para a câmera" width="896" height="1200" loading="lazy" decoding="async">
+          <figcaption>o Caramelo aprovou</figcaption>
+        </figure>
+        <figure class="photo photo--framed pet-grid__aisle" data-speed="-0.03" data-parallax>
+          <img src="assets/img/photos/pet-aisle.webp" alt="Tutora escolhendo ração no corredor pet com o cachorro na guia" width="1600" height="1067" loading="lazy" decoding="async">
+        </figure>
         <div class="pet-copy reveal delay-1">
           <p>Ração de todas as linhas, petisco, brinquedo, roupinha, caminha, coleira e remédio. E se você não souber qual ração escolher, pergunta no balcão.</p>
           <ul><li>Ração</li><li>Petiscos</li><li>Brinquedos</li><li>Roupas</li><li>Acessórios</li><li>Medicamentos</li></ul>
         </div>
-        <div class="collage">
-          <figure class="photo photo--framed collage__dog" data-speed="-0.10" data-parallax>
-            <img src="assets/img/photos/dog.webp" alt="Cachorro vira-lata caramelo sentado no feno olhando para a câmera" width="896" height="1200" loading="lazy" decoding="async">
-            <figcaption>o Caramelo aprovou</figcaption>
-          </figure>
-          <figure class="photo photo--framed collage__cat" data-speed="0.14" data-parallax>
-            <img src="assets/img/photos/cat.webp" alt="Gato cinza de olhos amarelos encarando a câmera no corredor da loja" width="1100" height="1100" loading="lazy" decoding="async">
-            <figcaption>fiscal do estoque</figcaption>
-          </figure>
-          <figure class="photo photo--framed collage__aisle" data-speed="-0.05" data-parallax>
-            <img src="assets/img/photos/pet-aisle.webp" alt="Tutora escolhendo ração no corredor pet com o cachorro na guia" width="1600" height="1067" loading="lazy" decoding="async">
-          </figure>
-          <div class="collage__note" data-speed="0.22"><span class="hand">Recado do balcão:</span><p>Traga o seu bicho junto. Aqui ele é bem-vindo e ainda ganha um petisco.</p></div>
-        </div>
+        <div class="pet-grid__note" data-speed="0.12"><span class="hand">Recado do balcão:</span><p>Traga o seu bicho junto. Aqui ele é bem-vindo e ainda ganha um petisco.</p></div>
       </div>
     </section>
 
@@ -407,7 +419,7 @@
         </aside>
       </div>
 
-      <figure class="photo storefront reveal" data-parallax>
+      <figure class="photo storefront reveal">
         <img src="assets/img/photos/storefront.webp" alt="Fachada do Empório Agropecuário na Av. Dr. Octaviano Pereira Mendes, em Itu" width="2200" height="943" loading="lazy" decoding="async">
         <figcaption>Av. Dr. Octaviano Pereira Mendes, 206</figcaption>
       </figure>
@@ -415,7 +427,38 @@
       <footer class="site-footer">
         <img src="assets/img/logo/logo-seal.webp" alt="Empório Agropecuário, Itu-SP" width="84" height="84" loading="lazy">
         <span class="mono">Empório Agropecuário · Itu-SP · desde novembro de 2001</span>
-        <span class="mono credit">Site criado por Bruno Villas Boas · <a href="https://www.linkedin.com/in/bruno-villas-boas/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/brvboas" target="_blank" rel="noopener">GitHub</a></span>
+        <!-- Author credit (js/extras.js → initPopovers):
+             • the head opens a small menu with LinkedIn and GitHub
+             • "inspiração" opens a note about the ideas behind the design -->
+        <div class="credit">
+          <div class="credit__item">
+            <button class="credit__toggle" type="button" data-popover aria-expanded="false" aria-controls="credit-menu">
+              <img class="credit__head" src="assets/img/credit/bruno-head.webp" alt="" width="216" height="240" loading="lazy" decoding="async">
+              <span class="mono">by Bruno Villas Boas</span>
+            </button>
+            <ul class="credit__menu" id="credit-menu" hidden>
+              <li><a href="https://www.linkedin.com/in/bruno-villas-boas/" target="_blank" rel="noopener author">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+                LinkedIn</a></li>
+              <li><a href="https://github.com/brvboas" target="_blank" rel="noopener author">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3Z"/></svg>
+                GitHub</a></li>
+            </ul>
+          </div>
+          <div class="credit__item">
+            <button class="inspiration__toggle mono" type="button" data-popover aria-expanded="false" aria-controls="inspiration-note">
+              <svg class="inspiration__bulb" viewBox="0 0 24 24" aria-hidden="true"><path class="bulb-glass" d="M12 2.5a6.5 6.5 0 0 0-3.9 11.7c.6.5.9 1.1.9 1.8V17h6v-1c0-.7.3-1.3.9-1.8A6.5 6.5 0 0 0 12 2.5Z"/><path class="bulb-base" d="M9 18.5h6M9.8 21h4.4"/></svg>
+              inspiração
+            </button>
+            <div class="inspiration__note" id="inspiration-note" role="note" hidden>
+              <span class="mono">De onde veio a ideia</span>
+              <p>Quis que o site tivesse cara de casa de ração. Quem já entrou numa vai reconhecer as coisas: os botões são aquelas tarjetas de preço vermelhas, meio tortas, e as bordas entre uma parte e outra imitam a costura do saco de ração, com a letra grandona e apertada de estampa de saco.</p>
+              <p>As espécies que a loja atende viraram brinco de gado. A farmácia ganhou um receituário com anotação de caneta azul. O endereço e os horários estão numa tabela nutricional, com porção de uma visita. As fotos estão presas como no mural do balcão, com recadinho escrito à mão, e as marcas passam numa faixa de promoção.</p>
+              <p>O verde eu tirei do pasto atrás da cabra, o vermelho veio do logo e o creme é o papel do saco. E quem abre tudo é a cabra mastigando, porque no fundo é isso que a loja faz há 25 anos: cuida pra que todo bicho coma bem.</p>
+              <span class="hand">Bruno</span>
+            </div>
+          </div>
+        </div>
       </footer>
     </section>
   </main>

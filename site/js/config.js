@@ -19,10 +19,14 @@
     background: '#1B3321',
   };
 
-  /** Hero choreography, expressed in hero scroll progress (0 → 1). */
+  /**
+   * Hero choreography, expressed in hero scroll progress (0 → 1).
+   * The hero is 380vh tall (css/hero.css), so 0 → 1 is ~2.8 screens of scroll.
+   * The final state (logo + seal + tagline) is reached at 0.92 and held briefly.
+   */
   const HERO_TIMELINE = {
     /** How many times the goat chews through the sequence (ping-pong) over the whole hero. */
-    chewCycles: 4.2,
+    chewCycles: 3,
     /** Easing factor for the smoothed progress (lower = smoother, laggier). */
     smoothing: 0.14,
 
@@ -31,21 +35,28 @@
      * A negative fadeInStart means "visible from the start".
      */
     lines: [
-      [-1, 0, 0.07, 0.11],     // "Bom dia." greeting
-      [0.11, 0.15, 0.26, 0.30], // "Aqui todo mundo come bem."
-      [0.30, 0.34, 0.52, 0.56], // "Do pasto…"
-      [0.38, 0.42, 0.52, 0.56], // "…ao sofá da sala."
-      [0.57, 0.61, 0.70, 0.74], // "E quando alguém fica doente…"
+      [-1, 0, 0.06, 0.10],      // "Bom dia." greeting
+      [0.10, 0.14, 0.24, 0.28], // "Aqui todo mundo come bem."
+      [0.28, 0.32, 0.46, 0.50], // "Do pasto…"
+      [0.34, 0.38, 0.46, 0.50], // "…ao sofá da sala."
+      [0.50, 0.54, 0.62, 0.66], // "E quando alguém fica doente…"
     ],
 
     scrollHintFade: [0.02, 0.06],
-    zoom:     { from: 0.72, to: 0.92, amount: 1.7 }, // extra scale added on top of 1
-    wipe:     [0.78, 0.92],  // green circle grows over the video
-    draw:     [0.82, 0.95],  // logo animals stroke drawing
-    fill:     [0.93, 0.985], // logo animals fill fade-in
-    seal:     [0.94, 0.99],  // seal "stamp"
-    outro:    [0.95, 1.00],  // brand name + tagline
+    zoom:     { from: 0.62, to: 0.80, amount: 1.7 }, // extra scale added on top of 1
+    wipe:     [0.66, 0.78],  // green circle grows over the video
+    draw:     [0.70, 0.84],  // logo animals stroke drawing
+    fill:     [0.80, 0.86],  // logo animals fill (starts while the last strokes finish)
+    seal:     [0.84, 0.90],  // seal "stamp"
+    outro:    [0.86, 0.92],  // brand name + tagline
+    skipFade: [0.82, 0.88],  // intro controls (assistir / pular abertura) disappear with the outro
   };
+
+  /**
+   * "Assistir abertura": hands-free playback of the opening.
+   * The page scrolls to `stopAt` of the hero's progress in `duration` ms.
+   */
+  const INTRO_AUTOPLAY = { duration: 11000, stopAt: 0.93 };
 
   /** Loader never blocks the page for longer than this (ms). */
   const LOADER_TIMEOUT = 6000;
@@ -59,5 +70,5 @@
   /** Speed of the brands band relative to scroll. */
   const BRANDS_SPEED = 0.35;
 
-  App.config = { GOAT_FRAMES, HERO_TIMELINE, LOADER_TIMEOUT, LOADER_MIN_DURATION, COLLAGE_BREAKPOINT, BRANDS_SPEED };
+  App.config = { GOAT_FRAMES, HERO_TIMELINE, INTRO_AUTOPLAY, LOADER_TIMEOUT, LOADER_MIN_DURATION, COLLAGE_BREAKPOINT, BRANDS_SPEED };
 })(window.Emporio = window.Emporio || {});

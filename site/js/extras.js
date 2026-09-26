@@ -5,12 +5,14 @@
  *  - the goat cameo in the contact section that keeps chewing on its own
  *  - animated water lines over the pool block
  *  - reliable autoplay for the looping videos (rooster, sparrow)
+ *  - "assistir abertura": plays the opening by scrolling on its own
  *  - header / floating WhatsApp state
+ *  - footer popovers: author links menu and the "inspiração" note
  */
 (function (App) {
   'use strict';
 
-  const { GOAT_FRAMES } = App.config;
+  const { GOAT_FRAMES, INTRO_AUTOPLAY } = App.config;
   const { $, $$, watchVisibility } = App.utils;
 
   /** Sets the hero greeting according to the visitor's local time. */
@@ -128,6 +130,109 @@
   }
 
   /**
+   * Intro controls. "Assistir abertura" scrolls through the opening by itself, from wherever
+   * the visitor is to the end of the intro (logo + seal), at a constant speed.
+   * Pressing the button again pauses. Any manual scroll, touch or key press
+   * hands control back to the visitor.
+   */
+  function initIntroAutoplay() {
+    const button = $('.intro-controls__play');
+    const hero = $('#hero');
+    if (!button || !hero) return;
+    const label = $('.intro-controls__label', button);
+
+    let rafId = 0;
+
+    const setPlaying = (playing) => {
+      button.setAttribute('aria-pressed', String(playing));
+      label.textContent = playing ? 'pausar' : 'assistir abertura';
+    };
+
+    const stop = () => {
+      if (!rafId) return;
+      cancelAnimationFrame(rafId);
+      rafId = 0;
+      setPlaying(false);
+    };
+
+    const play = () => {
+      const heroTop = hero.getBoundingClientRect().top + scrollY;
+      const target = heroTop + (hero.offsetHeight - innerHeight) * INTRO_AUTOPLAY.stopAt;
+      const from = scrollY;
+      if (target - from < 20) return; // already at the end of the intro
+      // Shorter remaining distance → proportionally shorter playback.
+      const duration = INTRO_AUTOPLAY.duration * Math.min(1, (target - from) / (target - heroTop || 1));
+      const start = performance.now();
+      setPlaying(true);
+
+      const step = (now) => {
+        const t = Math.min(1, (now - start) / duration);
+        scrollTo(0, from + (target - from) * t); // constant speed from start to finish
+        if (t < 1) rafId = requestAnimationFrame(step);
+        else { rafId = 0; setPlaying(false); }
+      };
+      rafId = requestAnimationFrame(step);
+    };
+
+    button.addEventListener('click', () => (rafId ? stop() : play()));
+
+    // "Pular abertura" jumps to the end of the intro (logo + seal), not past it.
+    // Without JavaScript, its href (#campo) still skips to the first chapter.
+    const skip = $('.skip-intro');
+    if (skip) skip.addEventListener('click', (event) => {
+      event.preventDefault();
+      stop();
+      const heroTop = hero.getBoundingClientRect().top + scrollY;
+      scrollTo(0, heroTop + (hero.offsetHeight - innerHeight) * INTRO_AUTOPLAY.stopAt);
+      // Tell the hero to jump there too, instead of easing through the whole intro.
+      dispatchEvent(new Event('emporio:snap-hero'));
+    });
+    // The visitor takes over as soon as they scroll or touch the page themselves.
+    // (Keys pressed on the button itself are its own play/pause, not a takeover.)
+    ['wheel', 'touchstart', 'keydown'].forEach((type) =>
+      addEventListener(type, (event) => { if (event.target !== button) stop(); }, { passive: true }));
+  }
+
+  /**
+   * Footer popovers (author links menu, "inspiração" note).
+   * Every button with [data-popover] toggles the element named in its
+   * aria-controls. Opening one closes the others; a click outside or Escape
+   * closes whatever is open.
+   */
+  function initPopovers() {
+    const toggles = $$('[data-popover]');
+    const panelOf = (toggle) => document.getElementById(toggle.getAttribute('aria-controls'));
+
+    const setOpen = (toggle, open) => {
+      const panel = panelOf(toggle);
+      if (!panel) return;
+      panel.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+    const closeAll = (except) => toggles.forEach((t) => { if (t !== except) setOpen(t, false); });
+
+    toggles.forEach((toggle) => {
+      toggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const willOpen = panelOf(toggle).hidden;
+        closeAll(toggle);
+        setOpen(toggle, willOpen);
+      });
+    });
+    document.addEventListener('click', (event) => {
+      toggles.forEach((toggle) => {
+        const panel = panelOf(toggle);
+        if (panel && !panel.hidden && !panel.contains(event.target)) setOpen(toggle, false);
+      });
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      const open = toggles.find((t) => t.getAttribute('aria-expanded') === 'true');
+      if (open) { setOpen(open, false); open.focus(); }
+    });
+  }
+
+  /**
    * Header turns solid after half of the last hero screen; the floating
    * WhatsApp button appears a bit later.
    * @param {number} heroBottom Current bottom edge of the hero in px.
@@ -137,5 +242,5 @@
     $('.whatsapp-float').classList.toggle('is-visible', heroBottom < innerHeight * 0.3);
   }
 
-  App.extras = { setGreeting, initReveal, initGoatCameo, initPoolWaves, initVideos, updateChrome };
+  App.extras = { setGreeting, initReveal, initGoatCameo, initPoolWaves, initVideos, initPopovers, initIntroAutoplay, updateChrome };
 })(window.Emporio = window.Emporio || {});

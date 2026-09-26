@@ -21,7 +21,7 @@
   const { preloadGoatFrames, GoatRenderer } = App.goatSequence;
   const { HeroTimeline } = App.hero;
   const { ScrollEffects } = App.scrollEffects;
-  const { setGreeting, initReveal, initGoatCameo, initPoolWaves, initVideos, updateChrome } = App.extras;
+  const { setGreeting, initReveal, initGoatCameo, initPoolWaves, initVideos, initPopovers, initIntroAutoplay, updateChrome } = App.extras;
 
   document.documentElement.classList.add('js');
 
@@ -39,6 +39,8 @@
   initReveal();
   initGoatCameo(frames);
   initVideos();
+  initPopovers();
+  initIntroAutoplay();
   if (!reducedMotion) initPoolWaves();
 
   // Resizing only resets the canvas; the next animation frame redraws it.

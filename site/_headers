@@ -6,11 +6,13 @@
 /assets/*
   Cache-Control: public, max-age=2592000
 
+# CSS and JS are revalidated on every visit (a cheap 304 when unchanged), so a
+# new deploy never mixes fresh HTML with yesterday's scripts.
 /css/*
-  Cache-Control: public, max-age=86400, must-revalidate
+  Cache-Control: public, max-age=0, must-revalidate
 
 /js/*
-  Cache-Control: public, max-age=86400, must-revalidate
+  Cache-Control: public, max-age=0, must-revalidate
 
 /*
   X-Content-Type-Options: nosniff

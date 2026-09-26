@@ -5,6 +5,8 @@ One-page, scroll-driven website for **Empório Agropecuário**, a farm-supply st
 As you scroll, a goat chews in time with the page. The page then tells the store's story in four chapters: livestock, veterinary pharmacy, pets, and garden & pool. It ends with the store's address, opening hours and a WhatsApp button.
 
 > The site's copy is in Brazilian Portuguese. Code, comments and documentation are in English.
+>
+> **Hosting:** the live site is hosted on [Cloudflare Pages](https://pages.cloudflare.com/), serving the `site/` folder.
 
 ---
 
@@ -112,6 +114,8 @@ The **Live Server** extension for VS Code also works: right-click `site/index.ht
 ## Deploying
 
 The site is fully static, so there is no build command. Only the `site/` folder is published.
+
+**Current host: Cloudflare Pages.** The steps for it are below, along with Vercel and Netlify in case the site ever moves.
 
 ### Vercel
 

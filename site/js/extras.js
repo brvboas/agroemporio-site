@@ -15,10 +15,20 @@
   const { GOAT_FRAMES, INTRO_AUTOPLAY } = App.config;
   const { $, $$, watchVisibility } = App.utils;
 
-  /** Sets the hero greeting according to the visitor's local time. */
+  /**
+   * Sets the hero greeting and its question according to the visitor's local time:
+   *   00:00–11:59  "Bom dia."   / "Já comeu hoje? Ela já."
+   *   12:00–17:59  "Boa tarde." / "Já almoçou hoje? Ela já."
+   *   18:00–23:59  "Boa noite." / "Já jantou hoje? Ela já."
+   */
   function setGreeting() {
     const hour = new Date().getHours();
-    $('#greeting').textContent = hour < 12 ? 'Bom dia.' : hour < 18 ? 'Boa tarde.' : 'Boa noite.';
+    const [greeting, meal] =
+      hour < 12 ? ['Bom dia.', 'comeu'] :
+      hour < 18 ? ['Boa tarde.', 'almoçou'] :
+                  ['Boa noite.', 'jantou'];
+    $('#greeting').textContent = greeting;
+    $('#greeting-question').textContent = `Já ${meal} hoje? Ela já.`;
   }
 
   /** Adds .is-in to every .reveal element the first time it enters the viewport. */

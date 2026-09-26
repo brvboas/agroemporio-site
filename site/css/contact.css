@@ -112,9 +112,12 @@
 .store-label tr.is-thick { border-bottom: 4px solid var(--color-ink); }
 .store-label small { display: block; margin-top: 10px; font-size: 12px; line-height: 1.35; }
 
-.storefront { margin-top: 80px; aspect-ratio: 21 / 9; }
-.storefront img { object-position: 50% 40%; }
-@media (max-width: 720px) { .storefront { aspect-ratio: 4 / 3; } }
+.storefront { margin-top: 80px; }
+/* The storefront is shown whole (no parallax, no side crop). If the frame
+   ever needs to be shorter, only the bottom of the photo gets trimmed. */
+.storefront figcaption { max-width: calc(100% - 28px); }
+@media (max-width: 600px) { .storefront figcaption { font-size: 17px; } }
+.storefront img { position: static; width: 100%; height: auto; max-height: 70vh; object-fit: cover; object-position: 50% 0; }
 @media (max-width: 900px) { .contact-grid { grid-template-columns: minmax(0, 1fr); } }
 
 /* --------------------------------------------------------------------------
@@ -134,8 +137,11 @@
 .site-footer .mono { opacity: .75; }
 
 /* Author credit: 3D figure head + "by Bruno Villas Boas", opens a links menu. */
-.credit { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+/* Two lines next to the face: the name on top, "inspiração" right under it, both right-aligned. */
+.credit { display: flex; flex-direction: column; align-items: flex-end; }
 .credit__item { position: relative; }
+/* Tuck "inspiração" under the name, beside the lower half of the face. */
+.credit__item + .credit__item { margin-top: -30px; }
 .credit__toggle {
   display: inline-flex;
   align-items: center;
@@ -147,8 +153,8 @@
   border: 0;
   cursor: pointer;
 }
-.credit__toggle .mono { font-size: 11px; opacity: .75; transition: opacity .2s; }
-.site-footer .credit__head { width: 50px; height: auto; transform-origin: 50% 90%; transition: transform .3s var(--ease-spring); }
+.credit__toggle .mono { margin-bottom: 18px; font-size: 11px; opacity: .75; transition: opacity .2s; } /* lifts the name to the upper half of the face */
+.site-footer .credit__head { width: 55px; height: auto; transform-origin: 50% 90%; transition: transform .3s var(--ease-spring); }
 /* On hover the head nods along to the music in the headphones. */
 .credit__toggle:hover .credit__head,
 .credit__toggle[aria-expanded="true"] .credit__head { animation: credit-nod .6s ease-in-out infinite alternate; }
@@ -209,9 +215,9 @@
 .inspiration__toggle {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-left: 4px;
-  padding: 4px 6px;
+  gap: 6px;
+  margin-right: 10px; /* right edge lines up with the name above */
+  padding: 2px 0;
   font-size: 11px;
   color: var(--color-straw);
   background: none;

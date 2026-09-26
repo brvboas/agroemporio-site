@@ -50,13 +50,15 @@
     seal:     [0.84, 0.90],  // seal "stamp"
     outro:    [0.86, 0.92],  // brand name + tagline
     skipFade: [0.82, 0.88],  // intro controls (assistir / pular abertura) disappear with the outro
+    endHint:  [0.88, 0.93],  // "continue rolando" hint appears on the final frame
   };
 
   /**
    * "Assistir abertura": hands-free playback of the opening.
    * The page scrolls to `stopAt` of the hero's progress in `duration` ms.
+   * "Pular abertura" jumps straight to that same point (the final frame).
    */
-  const INTRO_AUTOPLAY = { duration: 11000, stopAt: 0.93 };
+  const INTRO_AUTOPLAY = { duration: 15000, stopAt: 0.93 };
 
   /** Loader never blocks the page for longer than this (ms). */
   const LOADER_TIMEOUT = 6000;

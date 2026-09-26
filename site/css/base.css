@@ -23,6 +23,8 @@ body {
 }
 
 img, video, canvas { max-width: 100%; display: block; }
+/* width/height attributes only reserve space; CSS sizes win, so keep the ratio. */
+img { height: auto; }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--color-red); outline-offset: 3px; }
 

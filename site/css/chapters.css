@@ -99,7 +99,19 @@
   transform: rotate(2.2deg);
 }
 .video-frame video { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: #BDA776; }
-.video-frame .hand { position: absolute; bottom: -54px; left: -10px; font-size: 34px; color: var(--color-red); transform: rotate(-4deg); }
+/* Caption as a paper sticker inside the frame, same as the photo captions. */
+.video-frame .hand {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 6px 12px 2px;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--color-red);
+  background: var(--color-paper);
+  transform: rotate(-3deg);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, .25);
+}
 
 .field-photos {
   display: grid;
@@ -115,13 +127,7 @@
   .field-grid, .field-photos { grid-template-columns: minmax(0, 1fr); }
   /* Rooster clip: narrower, pushed right, caption as a sticker inside the frame. */
   .video-frame { width: min(72%, 420px); justify-self: end; margin-top: 12px; }
-  .video-frame .hand {
-    left: 10px; bottom: 10px;
-    padding: 6px 12px 2px;
-    font-size: 24px;
-    background: var(--color-paper);
-    box-shadow: 3px 3px 0 rgba(0, 0, 0, .25);
-  }
+  .video-frame .hand { left: 10px; bottom: 10px; font-size: 22px; }
   /* Salt photo overlaps the truck photo instead of stacking under it. */
   .field-photos { gap: 0; }
   .field-photos__salt { position: relative; z-index: 2; width: 56%; justify-self: end; margin-top: -18%; }

@@ -33,6 +33,10 @@
       this.animalsPath.style.strokeDashoffset = this.animalsLength;
 
       this.smoothedProgress = 0;
+
+      // "Pular abertura" asks for an instant jump: skip the smoothing once.
+      this.snapNext = false;
+      addEventListener('emporio:snap-hero', () => { this.snapNext = true; });
     }
 
     /** Raw 0 → 1 progress of the sticky hero (0 = top, 1 = last pixel). */
@@ -50,6 +54,7 @@
     /** Called every animation frame. */
     update() {
       const target = this.rawProgress();
+      if (this.snapNext) { this.smoothedProgress = target; this.snapNext = false; }
       this.smoothedProgress += (target - this.smoothedProgress) * T.smoothing;
       if (Math.abs(target - this.smoothedProgress) < 0.0002) this.smoothedProgress = target;
       this.render(this.smoothedProgress);

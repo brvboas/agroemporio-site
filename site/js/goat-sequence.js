@@ -64,10 +64,17 @@
     const frames = Array.from({ length: GOAT_FRAMES.count }, (_, index) => {
       const image = new Image();
       image.decoding = 'async';
-      image.onload = image.onerror = () => {
+      const done = () => {
         loadedCount += 1;
         if (index === 0 && onFirstFrame) onFirstFrame();
       };
+      // Decode each frame as soon as it arrives, off the main thread, so
+      // scrolling never has to stop and decode a WebP mid-animation.
+      image.onload = () => {
+        if (image.decode) image.decode().then(done, done);
+        else done();
+      };
+      image.onerror = done;
       image.src = GOAT_FRAMES.url(index);
       return image;
     });

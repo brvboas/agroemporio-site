@@ -75,9 +75,9 @@
   animation: scroll-hint-drop 1.6s ease-in-out infinite;
 }
 /* End-of-intro hint: same look, hidden until the logo and seal are in place. */
-.scroll-hint--end { opacity: 0; z-index: 4; }
+.scroll-hint--end { right: 20px; bottom: 16px; opacity: 0; z-index: 4; }
 @media (max-width: 720px) {
-  .scroll-hint--end { bottom: 2.5vh; }
+  .scroll-hint--end { right: 12px; bottom: 10px; }
   .scroll-hint--end .mono { font-size: 10px; }
 }
 

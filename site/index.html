@@ -49,12 +49,12 @@
   <!-- Styles (see README → Project structure) -->
   <!-- ?v= is a cache buster: change it on every deploy that edits CSS or JS, so
        phones never mix a new page with old cached styles or scripts. -->
-  <link rel="stylesheet" href="css/tokens.css?v=2026092602">
-  <link rel="stylesheet" href="css/base.css?v=2026092602">
-  <link rel="stylesheet" href="css/components.css?v=2026092602">
-  <link rel="stylesheet" href="css/hero.css?v=2026092602">
-  <link rel="stylesheet" href="css/chapters.css?v=2026092602">
-  <link rel="stylesheet" href="css/contact.css?v=2026092602">
+  <link rel="stylesheet" href="css/tokens.css?v=2026092606">
+  <link rel="stylesheet" href="css/base.css?v=2026092606">
+  <link rel="stylesheet" href="css/components.css?v=2026092606">
+  <link rel="stylesheet" href="css/hero.css?v=2026092606">
+  <link rel="stylesheet" href="css/chapters.css?v=2026092606">
+  <link rel="stylesheet" href="css/contact.css?v=2026092606">
 
   <!-- Without JavaScript the loader is pointless: hide it right away. -->
   <noscript><style>.loader { display: none; }</style></noscript>
@@ -454,6 +454,12 @@
             <div class="goat-cameo__frame"><canvas id="goat-cameo-canvas" width="380" height="380" role="img" aria-label="A cabra, ainda mastigando"></canvas></div>
             <p class="serif">Ela fica aqui mastigando até você voltar.</p>
           </div>
+          <!-- Instagram / Facebook as plastic livestock ear tags (app logo moulded in, round
+               stud at the end), hanging a bit crooked under the goat. -->
+          <ul class="social-tags reveal delay-2" aria-label="Redes sociais do Empório">
+            <li><a class="plastic-tag plastic-tag--instagram" style="--tilt: -5deg" href="https://www.instagram.com/emporioagropecuarioitu/" target="_blank" rel="noopener" aria-label="Instagram do Empório (abre em nova aba)"><span class="plastic-tag__body"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3Zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM21.1 8.2c-.1-1.5-.4-2.8-1.5-3.9S17.3 2.9 15.8 2.8c-1.5-.1-6.1-.1-7.6 0-1.5.1-2.8.4-3.9 1.5S2.9 6.7 2.8 8.2c-.1 1.5-.1 6.1 0 7.6.1 1.5.4 2.8 1.5 3.9s2.4 1.4 3.9 1.5c1.5.1 6.1.1 7.6 0 1.5-.1 2.8-.4 3.9-1.5s1.4-2.4 1.5-3.9c.1-1.5.1-6.1 0-7.6Zm-2 9.3a3.1 3.1 0 0 1-1.7 1.7c-1.2.5-4 .4-5.4.4s-4.2.1-5.4-.4a3.1 3.1 0 0 1-1.7-1.7c-.5-1.2-.4-4-.4-5.4s-.1-4.2.4-5.4a3.1 3.1 0 0 1 1.7-1.7c1.2-.5 4-.4 5.4-.4s4.2-.1 5.4.4a3.1 3.1 0 0 1 1.7 1.7c.5 1.2.4 4 .4 5.4s.1 4.2-.4 5.4Z"/></svg></span><span class="plastic-tag__stud" aria-hidden="true"></span></a></li>
+            <li><a class="plastic-tag plastic-tag--facebook" style="--tilt: 4deg" href="https://www.facebook.com/emporioagropecuarioitu/" target="_blank" rel="noopener" aria-label="Facebook do Empório (abre em nova aba)"><span class="plastic-tag__body"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg></span><span class="plastic-tag__stud" aria-hidden="true"></span></a></li>
+          </ul>
         </div>
       </div>
 
@@ -471,7 +477,7 @@
         <div class="credit">
           <div class="credit__item">
             <button class="credit__toggle" type="button" data-popover aria-expanded="false" aria-controls="credit-menu">
-              <img class="credit__head" src="assets/img/credit/bruno-head.webp?v=2026092602" alt="" width="216" height="240" loading="lazy" decoding="async">
+              <img class="credit__head" src="assets/img/credit/bruno-head.webp?v=2026092606" alt="" width="216" height="240" loading="lazy" decoding="async">
               <span class="mono">by Bruno Villas Boas</span>
             </button>
             <ul class="credit__menu" id="credit-menu" hidden>
@@ -505,12 +511,12 @@
 
   <!-- Classic deferred scripts (order matters): they share the window.Emporio
        namespace, so the page also works when opened directly from disk. -->
-  <script defer src="js/config.js?v=2026092602"></script>
-  <script defer src="js/utils.js?v=2026092602"></script>
-  <script defer src="js/goat-sequence.js?v=2026092602"></script>
-  <script defer src="js/hero.js?v=2026092602"></script>
-  <script defer src="js/scroll-effects.js?v=2026092602"></script>
-  <script defer src="js/extras.js?v=2026092602"></script>
-  <script defer src="js/main.js?v=2026092602"></script>
+  <script defer src="js/config.js?v=2026092606"></script>
+  <script defer src="js/utils.js?v=2026092606"></script>
+  <script defer src="js/goat-sequence.js?v=2026092606"></script>
+  <script defer src="js/hero.js?v=2026092606"></script>
+  <script defer src="js/scroll-effects.js?v=2026092606"></script>
+  <script defer src="js/extras.js?v=2026092606"></script>
+  <script defer src="js/main.js?v=2026092606"></script>
 </body>
 </html>

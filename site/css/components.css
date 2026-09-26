@@ -19,7 +19,7 @@
   animation: loader-failsafe 0s linear 8s forwards;
 }
 .loader.is-hidden { opacity: 0; visibility: hidden; }
-.loader svg { width: min(340px, 70vw); overflow: visible; }
+.loader svg { width: min(340px, calc(70 * var(--vw))); overflow: visible; }
 .loader path { fill: none; stroke: var(--color-straw); stroke-width: 2.2; }
 .loader .mono { margin-top: 18px; text-align: center; color: var(--color-sprout); }
 
@@ -119,6 +119,9 @@
   transition: opacity .4s, transform .4s;
 }
 .whatsapp-float.is-visible { opacity: 1; pointer-events: auto; transform: rotate(-3deg); }
+/* Near the end of the page the button stops ('docks') in the gap between the
+   storefront photo and the footer instead of covering the footer. */
+.whatsapp-float { translate: 0 var(--dock, 0px); }
 
 /* --------------------------------------------------------------------------
    Feed-sack stitches — zig-zag cut between sections.
@@ -142,7 +145,7 @@
    Chapter scaffolding
    -------------------------------------------------------------------------- */
 /* Vertical rhythm between chapters: kept tight so the story flows. */
-.chapter { position: relative; overflow: hidden; padding-block: clamp(48px, 6vw, 80px) clamp(56px, 6.5vw, 90px); }
+.chapter { position: relative; overflow: hidden; padding-block: clamp(48px, calc(6 * var(--vw)), 80px) clamp(56px, calc(6.5 * var(--vw)), 90px); }
 .chapter__head {
   position: relative;
   display: flex;
@@ -161,7 +164,7 @@
   font-family: var(--font-display);
   font-weight: 900;
   text-transform: uppercase;
-  font-size: clamp(160px, 30vw, 460px);
+  font-size: clamp(160px, calc(30 * var(--vw)), 460px);
   line-height: .8;
   color: transparent;
   -webkit-text-stroke: 1.5px currentColor;

@@ -249,7 +249,26 @@
    */
   function updateChrome(heroBottom) {
     $('.site-header').classList.toggle('is-solid', heroBottom < innerHeight * 0.5);
-    $('.whatsapp-float').classList.toggle('is-visible', heroBottom < innerHeight * 0.3);
+    const whatsapp = $('.whatsapp-float');
+    whatsapp.classList.toggle('is-visible', heroBottom < innerHeight * 0.3);
+    dockWhatsapp(whatsapp);
+  }
+
+  /**
+   * Keeps the floating WhatsApp button from covering the footer: once the
+   * footer scrolls into view, the button rides up with the page and stays
+   * centred in the gap between the storefront photo and the footer line.
+   * @param {HTMLElement} button
+   */
+  function dockWhatsapp(button) {
+    const footer = $('.site-footer');
+    const photo = $('.storefront');
+    if (!footer || !photo) return;
+    const gapCentre = (photo.getBoundingClientRect().bottom + footer.getBoundingClientRect().top) / 2;
+    // Where the button's centre sits when it is not docked (bottom offset from CSS).
+    const restingCentre = innerHeight - parseFloat(getComputedStyle(button).bottom) - button.offsetHeight / 2;
+    const dock = Math.min(0, gapCentre - restingCentre);
+    button.style.setProperty('--dock', `${Math.round(dock)}px`);
   }
 
   App.extras = { setGreeting, initReveal, initGoatCameo, initPoolWaves, initVideos, initPopovers, initIntroAutoplay, updateChrome };

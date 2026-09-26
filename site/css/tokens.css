@@ -34,7 +34,12 @@
   --font-hand:    "Reenie Beanie", "Comic Sans MS", cursive;                   /* handwritten notes   */
 
   /* Layout */
-  --gutter: clamp(16px, 4vw, 56px); /* horizontal page padding at every width */
+  /* Past 1440px wide the layout stops growing: --vw is 1vw that freezes at
+     14.4px (1% of 1440px), and the gutter widens so the content stays in a
+     centred 1440px column while backgrounds still run edge to edge. */
+  --page-max: 1440px;
+  --vw: min(1vw, 14.4px);
+  --gutter: max(clamp(16px, 4vw, 56px), calc((100vw - var(--page-max)) / 2 + 56px)); /* horizontal page padding */
 
   /* Motion */
   --ease-out-soft: cubic-bezier(.2, .7, .2, 1);

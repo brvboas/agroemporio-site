@@ -156,6 +156,7 @@ The site is fully static, so there is no build command. Only the `site/` folder 
 | Performance (a ranking factor): preloaded first frame, lazy-loaded images with explicit `width`/`height` (no layout shift), WebP everywhere, video posters, long cache headers for assets | throughout |
 | Clickable `tel:`, `mailto:` and WhatsApp links | contact section |
 | Hand-drawn map card linking to Google Maps (no embedded map: no third-party cookies, instant load) | contact section |
+| Instagram and Facebook links (also listed in the JSON-LD `sameAs`) | contact section, as plastic ear tags under the goat |
 
 ### After launch (outside the code, but it makes the biggest difference)
 
@@ -235,6 +236,9 @@ The whole site is built to feel like a Brazilian farm-supply store (a *casa de r
 The same text, in Portuguese and in Bruno's own voice, is in the footer behind the **"inspiração"** lamp.
 
 ## Accessibility & performance
+
+- **Wide screens:** past 1440px the layout stops growing. `--vw` in `css/tokens.css` is a 1vw that freezes at 14.4px, and `--gutter` widens so content stays in a centred 1440px column while section backgrounds run edge to edge.
+- **Floating WhatsApp button:** near the end of the page it docks in the gap between the storefront photo and the footer instead of covering the footer (`js/extras.js` → `dockWhatsapp`).
 
 - Respects `prefers-reduced-motion`: the hero shows a static frame and scroll animations are disabled.
 - Content is readable without JavaScript. Reveal animations only hide elements once `html.js` is set, and the loader is removed in `<noscript>`.

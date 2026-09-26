@@ -66,11 +66,11 @@
         if (frame >= lastFrame || frame <= 0) step *= -1;
         const image = frames[frame];
         if (image && image.naturalWidth) {
-          // Crop to the goat's face: frame height ≈ 128% of the circle.
-          const scale = canvas.width / (image.naturalHeight * 0.78);
+          // Frame height = circle height: the whole head (ears, mouth, base
+          // of the horns) fits, with no empty band at the top or bottom.
+          const scale = canvas.height / image.naturalHeight;
           const w = image.naturalWidth * scale;
-          const h = image.naturalHeight * scale;
-          ctx.drawImage(image, canvas.width / 2 - w / 2, canvas.height / 2 - h * 0.45, w, h);
+          ctx.drawImage(image, canvas.width / 2 - w / 2, 0, w, canvas.height);
         }
       }
       requestAnimationFrame(tick);

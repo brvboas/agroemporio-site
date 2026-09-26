@@ -32,6 +32,13 @@
     loaderPath.style.strokeDasharray = pathLength;
     loaderPath.style.strokeDashoffset = pathLength;
 
+    // Lighter sequence on phones / data saver (see GOAT_FRAMES.lightStep).
+    const saveData = navigator.connection && navigator.connection.saveData;
+    const step = saveData || matchMedia(GOAT_FRAMES.lightQuery).matches ? GOAT_FRAMES.lightStep : 1;
+    const isWanted = (index) => index % step === 0 || index === GOAT_FRAMES.count - 1;
+    let toLoad = 0;
+    for (let i = 0; i < GOAT_FRAMES.count; i++) if (isWanted(i)) toLoad += 1;
+
     let loadedCount = 0;
     let hidden = false;
     const startedAt = performance.now();
@@ -47,7 +54,7 @@
     let shownRatio = 0;
     const animateLoader = (now) => {
       if (hidden) return;
-      const loadedRatio = loadedCount / GOAT_FRAMES.count;
+      const loadedRatio = loadedCount / toLoad;
       const timeRatio = Math.min(1, (now - startedAt) / LOADER_MIN_DURATION);
       const target = Math.min(loadedRatio, timeRatio);
       shownRatio += (target - shownRatio) * 0.12;
@@ -64,6 +71,7 @@
     const frames = Array.from({ length: GOAT_FRAMES.count }, (_, index) => {
       const image = new Image();
       image.decoding = 'async';
+      if (!isWanted(index)) return image; // never loaded: the renderer uses the nearest loaded frame
       const done = () => {
         loadedCount += 1;
         if (index === 0 && onFirstFrame) onFirstFrame();

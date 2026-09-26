@@ -152,7 +152,7 @@
   padding: 44px var(--gutter) 0;
 }
 .pharmacy-grid h2 { font-size: clamp(54px, calc(7.4 * var(--vw)), 124px); color: var(--color-paper); }
-.pharmacy-grid h2 em { font-style: normal; color: var(--color-red); }
+.pharmacy-grid h2 em { font-style: normal; color: var(--color-red-on-dark); }
 .pharmacy-grid .lead { max-width: 44ch; margin: 26px 0 0; font-size: clamp(19px, calc(1.5 * var(--vw)), 22px); }
 
 /* Prescription pad ("receituário"). */

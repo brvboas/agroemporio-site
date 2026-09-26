@@ -48,6 +48,10 @@
 
 /* Only the first line is visible before any scroll. */
 .js .hero__line:not(.hero__line--0) { opacity: 0; }
+/* Without JavaScript the opening can't play: show only the greeting over the
+   first frame, as one screen, instead of every headline stacked. */
+html:not(.js) .hero { height: 100vh; height: 100svh; }
+html:not(.js) :is(.hero__line:not(.hero__line--0), .hero__wipe, .hero__animals, .hero__seal, .hero__outro, .scroll-hint--end, .intro-controls) { display: none; }
 
 .hero__line--0 { left: var(--gutter); bottom: 12vh; }
 .hero__line--1 { left: var(--gutter); top: 20vh; }

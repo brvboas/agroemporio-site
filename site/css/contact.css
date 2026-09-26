@@ -46,7 +46,7 @@
 /* --------------------------------------------------------------------------
    Contact
    -------------------------------------------------------------------------- */
-.contact { position: relative; overflow: hidden; padding: 110px var(--gutter) 36px; color: var(--color-straw); background: var(--color-pasture); }
+.contact { position: relative; overflow: hidden; padding: 110px var(--gutter) 90px; /* bottom: the floating WhatsApp button parks here (js/extras.js → dockWhatsapp) */ color: var(--color-straw); background: var(--color-pasture); }
 .contact-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); align-items: start; gap: clamp(30px, calc(5 * var(--vw)), 90px); }
 .contact-grid h2 { font-size: clamp(70px, calc(11 * var(--vw)), 190px); color: var(--color-paper); }
 .contact-grid h2 .highlight { font-size: .7em; }
@@ -117,7 +117,7 @@
 @media (prefers-reduced-motion: reduce) { .map-card__pin { animation: none; } }
 
 /* Right column: store label, then the goat cameo under it. */
-.contact-side { display: grid; gap: 44px; }
+.contact-side { display: grid; grid-template-columns: minmax(0, 1fr); gap: 44px; }
 
 /* Small round window where the goat keeps chewing on its own. */
 .goat-cameo { display: flex; align-items: center; gap: 22px; }
@@ -250,6 +250,7 @@
 .store-label table { width: 100%; border-collapse: collapse; font-size: 15px; }
 .store-label th { padding: 7px 8px 7px 0; text-align: left; vertical-align: top; font-weight: 700; white-space: nowrap; }
 .store-label td { padding: 7px 0; text-align: right; font-variant-numeric: tabular-nums; }
+
 .store-label td a { text-decoration: none; }
 .store-label tr { border-bottom: 1px solid rgba(19, 23, 17, .35); }
 .store-label tr.is-thick { border-bottom: 4px solid var(--color-ink); }
@@ -273,9 +274,13 @@
   justify-content: space-between;
   gap: 16px 30px;
   position: relative; /* anchors the credit popovers on phones */
-  margin-top: 90px; /* the floating WhatsApp button parks in this gap (js/extras.js → updateChrome) */
-  padding-top: 26px;
-  border-top: 1px solid rgba(237, 227, 201, .3);
+  /* Outside <main> since the audit (contentinfo landmark): it paints its own
+     green and draws the thin divider inside the gutters. */
+  padding: 26px var(--gutter) calc(env(safe-area-inset-bottom, 0px) + 36px);
+  color: var(--color-straw);
+  background:
+    linear-gradient(rgba(237, 227, 201, .3), rgba(237, 227, 201, .3)) var(--gutter) 0 / calc(100% - 2 * var(--gutter)) 1px no-repeat,
+    var(--color-pasture);
 }
 .site-footer img { width: 84px; }
 .site-footer .mono { opacity: .75; }

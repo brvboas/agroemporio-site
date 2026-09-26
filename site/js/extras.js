@@ -243,6 +243,39 @@
   }
 
   /**
+   * "Seções" menu for screens below 1080px, where the header nav is hidden.
+   * Closes on a link tap, a tap outside, Escape, or when the screen widens.
+   */
+  function initMobileMenu() {
+    const toggle = $('.menu-toggle');
+    const menu = $('#mobile-menu');
+    const header = $('.site-header');
+    if (!toggle || !menu) return;
+
+    const setOpen = (open) => {
+      menu.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      header.classList.toggle('menu-open', open);
+    };
+    toggle.addEventListener('click', (event) => {
+      event.stopPropagation();
+      setOpen(menu.hidden);
+    });
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('click', (event) => {
+      if (!menu.hidden && !menu.contains(event.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !menu.hidden) { setOpen(false); toggle.focus(); }
+    });
+    matchMedia('(min-width: 1081px)').addEventListener('change', (event) => {
+      if (event.matches) setOpen(false);
+    });
+  }
+
+  /**
    * Header turns solid after half of the last hero screen; the floating
    * WhatsApp button appears a bit later.
    * @param {number} heroBottom Current bottom edge of the hero in px.
@@ -271,5 +304,5 @@
     button.style.setProperty('--dock', `${Math.round(dock)}px`);
   }
 
-  App.extras = { setGreeting, initReveal, initGoatCameo, initPoolWaves, initVideos, initPopovers, initIntroAutoplay, updateChrome };
+  App.extras = { setGreeting, initReveal, initGoatCameo, initPoolWaves, initVideos, initPopovers, initMobileMenu, initIntroAutoplay, updateChrome };
 })(window.Emporio = window.Emporio || {});

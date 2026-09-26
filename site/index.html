@@ -42,6 +42,8 @@
   <link rel="manifest" href="site.webmanifest">
 
   <!-- Performance: fonts and the first goat frame (largest contentful paint) -->
+  <!-- Flag JavaScript before first paint, so the page never flashes the no-JS layout. -->
+  <script>document.documentElement.classList.add('js')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="assets/frames/goat/g001.webp" fetchpriority="high">
@@ -50,12 +52,12 @@
   <!-- Styles (see README → Project structure) -->
   <!-- ?v= is a cache buster: change it on every deploy that edits CSS or JS, so
        phones never mix a new page with old cached styles or scripts. -->
-  <link rel="stylesheet" href="css/tokens.css?v=2026092606">
-  <link rel="stylesheet" href="css/base.css?v=2026092606">
-  <link rel="stylesheet" href="css/components.css?v=2026092606">
-  <link rel="stylesheet" href="css/hero.css?v=2026092606">
-  <link rel="stylesheet" href="css/chapters.css?v=2026092606">
-  <link rel="stylesheet" href="css/contact.css?v=2026092606">
+  <link rel="stylesheet" href="css/tokens.css?v=2026092607">
+  <link rel="stylesheet" href="css/base.css?v=2026092607">
+  <link rel="stylesheet" href="css/components.css?v=2026092607">
+  <link rel="stylesheet" href="css/hero.css?v=2026092607">
+  <link rel="stylesheet" href="css/chapters.css?v=2026092607">
+  <link rel="stylesheet" href="css/contact.css?v=2026092607">
 
   <!-- Without JavaScript the loader is pointless: hide it right away. -->
   <noscript><style>.loader { display: none; }</style></noscript>
@@ -136,8 +138,22 @@
       <a class="stamp-btn stamp-btn--small stamp-btn--paper" href="tel:+551140224117" aria-label="Disk entrega: ligar para (11) 4022-4117">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg><span class="stamp-btn__label">Disk entrega</span><span class="stamp-btn__number">(11) 4022-4117</span>
       </a>
-      <a class="stamp-btn stamp-btn--small" href="https://wa.me/5511998900545?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Emp%C3%B3rio!" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="stamp-btn stamp-btn--small" href="https://wa.me/5511998900545?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Emp%C3%B3rio!" target="_blank" rel="noopener" aria-label="WhatsApp (abre em nova aba)">WhatsApp</a>
+      <!-- Below 1080px the chapter links move into this menu (js/extras.js → initMobileMenu). -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="menu-toggle__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="menu-toggle__label mono">Seções</span>
+      </button>
     </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Seções" hidden>
+      <ol>
+        <li><a href="#campo"><span class="mono">01</span>Campo</a></li>
+        <li><a href="#farmacia"><span class="mono">02</span>Farmácia</a></li>
+        <li><a href="#pet"><span class="mono">03</span>Pet</a></li>
+        <li><a href="#jardim"><span class="mono">04</span>Jardim &amp; piscina</a></li>
+        <li><a href="#contato"><span class="mono">05</span>Contato</a></li>
+      </ol>
+    </nav>
   </header>
 
   <main id="topo">
@@ -425,29 +441,29 @@
             <span class="map-card__cta">Abrir no Google Maps <span aria-hidden="true">↗</span></span>
           </a>
           <div class="contact-actions reveal delay-2">
-            <a class="stamp-btn" href="https://wa.me/5511998900545?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Emp%C3%B3rio!" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>Chamar no WhatsApp</a>
+            <a class="stamp-btn" href="https://wa.me/5511998900545?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Emp%C3%B3rio!" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp (abre em nova aba)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>Chamar no WhatsApp</a>
             <a class="stamp-btn stamp-btn--paper" href="tel:+551140224117"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Disk entrega</a>
           </div>
           <dl class="phone-list reveal delay-2">
             <div><dt class="mono">Disk entrega</dt><dd><a class="phone" href="tel:+551140224117">(11) 4022-4117</a></dd></div>
-            <div><dt class="mono">WhatsApp</dt><dd><a class="phone" href="https://wa.me/5511998900545" target="_blank" rel="noopener">(11) 9 9890-0545</a></dd></div>
+            <div><dt class="mono">WhatsApp</dt><dd><a class="phone" href="https://wa.me/5511998900545?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Emp%C3%B3rio!" target="_blank" rel="noopener" aria-label="WhatsApp (11) 9 9890-0545 (abre em nova aba)">(11) 9 9890-0545</a></dd></div>
           </dl>
         </div>
 
         <div class="contact-side">
         <!-- Store facts styled as an "Informação nutricional" label. -->
         <aside class="store-label reveal delay-1" aria-label="Informações da loja">
-          <h3>Informação da loja</h3>
+          <h3 id="store-label-title">Informação da loja</h3>
           <div class="store-label__serving">Porção: 1 visita · Rende: o mês inteiro</div>
-          <table>
+          <table aria-labelledby="store-label-title">
             <tr><th scope="row">Endereço</th><td>Av. Dr. Octaviano Pereira Mendes, 206<br>Itu-SP · 13300-000</td></tr>
             <tr class="is-thick"><th scope="row">Entrega</th><td>Grátis em Itu e região</td></tr>
             <tr><th scope="row">Seg a sex</th><td><time datetime="07:30">7h30</time> às <time datetime="18:00">18h</time></td></tr>
             <tr><th scope="row">Sábado</th><td><time datetime="07:30">7h30</time> às <time datetime="13:00">13h</time></td></tr>
             <tr class="is-thick"><th scope="row">Domingo</th><td><time datetime="07:30">7h30</time> às <time datetime="12:00">12h</time></td></tr>
             <tr><th scope="row">Disk entrega</th><td><a href="tel:+551140224117">(11) 4022-4117</a></td></tr>
-            <tr><th scope="row">WhatsApp</th><td><a href="https://wa.me/5511998900545" target="_blank" rel="noopener">(11) 9 9890-0545</a></td></tr>
-            <tr><th scope="row">E-mail</th><td><a href="mailto:agroemporio.itu@gmail.com">agroemporio.itu@gmail.com</a></td></tr>
+            <tr><th scope="row">WhatsApp</th><td><a href="https://wa.me/5511998900545?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Emp%C3%B3rio!" target="_blank" rel="noopener" aria-label="WhatsApp (11) 9 9890-0545 (abre em nova aba)">(11) 9 9890-0545</a></td></tr>
+            <tr><th scope="row">E-mail</th><td><a href="mailto:agroemporio.itu@gmail.com">agroemporio.itu@<wbr>gmail.com</a></td></tr>
           </table>
           <small>Atende Itu, Salto, Indaiatuba, Sorocaba, Porto Feliz, Cabreúva, Jundiaí e São Roque. Parcelamos no cartão.</small>
         </aside>
@@ -469,55 +485,59 @@
         <figcaption>Av. Dr. Octaviano Pereira Mendes, 206</figcaption>
       </figure>
 
-      <footer class="site-footer">
-        <img src="assets/img/logo/logo-seal.webp" alt="Empório Agropecuário, Itu-SP" width="84" height="84" loading="lazy">
-        <span class="mono">Empório Agropecuário · Itu-SP · desde novembro de 2001</span>
-        <!-- Author credit (js/extras.js → initPopovers):
-             • the head opens a small menu with LinkedIn and GitHub
-             • "inspiração" opens a note about the ideas behind the design -->
-        <div class="credit">
-          <div class="credit__item">
-            <button class="credit__toggle" type="button" data-popover aria-expanded="false" aria-controls="credit-menu">
-              <img class="credit__head" src="assets/img/credit/bruno-head.webp?v=2026092606" alt="" width="216" height="240" loading="lazy" decoding="async">
-              <span class="mono">by Bruno Villas Boas</span>
-            </button>
-            <ul class="credit__menu" id="credit-menu" hidden>
-              <li><a href="https://www.linkedin.com/in/bruno-villas-boas/" target="_blank" rel="noopener author">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
-                LinkedIn</a></li>
-              <li><a href="https://github.com/brvboas" target="_blank" rel="noopener author">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3Z"/></svg>
-                GitHub</a></li>
-            </ul>
-          </div>
-          <div class="credit__item">
-            <button class="inspiration__toggle mono" type="button" data-popover aria-expanded="false" aria-controls="inspiration-note">
-              <svg class="inspiration__bulb" viewBox="0 0 24 24" aria-hidden="true"><path class="bulb-glass" d="M12 2.5a6.5 6.5 0 0 0-3.9 11.7c.6.5.9 1.1.9 1.8V17h6v-1c0-.7.3-1.3.9-1.8A6.5 6.5 0 0 0 12 2.5Z"/><path class="bulb-base" d="M9 18.5h6M9.8 21h4.4"/></svg>
-              inspiração
-            </button>
-            <div class="inspiration__note" id="inspiration-note" role="note" hidden>
-              <span class="mono">De onde veio a ideia</span>
-              <p>Quis que o site tivesse cara de casa de ração. Quem já entrou numa vai reconhecer as coisas: os botões são aquelas tarjetas de preço vermelhas, meio tortas, e as bordas entre uma parte e outra imitam a costura do saco de ração, com a letra grandona e apertada de estampa de saco.</p>
-              <p>As espécies que a loja atende viraram brinco de gado. A farmácia ganhou um receituário com anotação de caneta azul. O endereço e os horários estão numa tabela nutricional, com porção de uma visita. As fotos estão presas como no mural do balcão, com recadinho escrito à mão, e as marcas passam numa faixa de promoção.</p>
-              <p>O verde eu tirei do pasto atrás da cabra, o vermelho veio do logo e o creme é o papel do saco. E quem abre tudo é a cabra mastigando, porque no fundo é isso que a loja faz há 25 anos: cuida pra que todo bicho coma bem.</p>
-              <span class="hand">Bruno</span>
-            </div>
-          </div>
-        </div>
-      </footer>
     </section>
   </main>
 
-  <a class="stamp-btn whatsapp-float" href="https://wa.me/5511998900545?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Emp%C3%B3rio!" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>WhatsApp</a>
+  <!-- ======================================================================
+       Footer (outside <main> so it is the page's contentinfo landmark)
+       ====================================================================== -->
+  <footer class="site-footer">
+    <img src="assets/img/logo/logo-seal.webp" alt="Empório Agropecuário, Itu-SP" width="84" height="84" loading="lazy">
+    <span class="mono">Empório Agropecuário · Itu-SP · desde novembro de 2001</span>
+    <!-- Author credit (js/extras.js → initPopovers):
+         • the head opens a small menu with LinkedIn and GitHub
+         • "inspiração" opens a note about the ideas behind the design -->
+    <div class="credit">
+      <div class="credit__item">
+        <button class="credit__toggle" type="button" data-popover aria-expanded="false" aria-controls="credit-menu">
+          <img class="credit__head" src="assets/img/credit/bruno-head.webp?v=2026092606" alt="" width="216" height="240" loading="lazy" decoding="async">
+          <span class="mono">by Bruno Villas Boas</span>
+        </button>
+        <ul class="credit__menu" id="credit-menu" hidden>
+          <li><a href="https://www.linkedin.com/in/bruno-villas-boas/" target="_blank" rel="noopener author" aria-label="LinkedIn (abre em nova aba)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+            LinkedIn</a></li>
+          <li><a href="https://github.com/brvboas" target="_blank" rel="noopener author" aria-label="GitHub (abre em nova aba)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3Z"/></svg>
+            GitHub</a></li>
+        </ul>
+      </div>
+      <div class="credit__item">
+        <button class="inspiration__toggle mono" type="button" data-popover aria-expanded="false" aria-controls="inspiration-note">
+          <svg class="inspiration__bulb" viewBox="0 0 24 24" aria-hidden="true"><path class="bulb-glass" d="M12 2.5a6.5 6.5 0 0 0-3.9 11.7c.6.5.9 1.1.9 1.8V17h6v-1c0-.7.3-1.3.9-1.8A6.5 6.5 0 0 0 12 2.5Z"/><path class="bulb-base" d="M9 18.5h6M9.8 21h4.4"/></svg>
+          inspiração
+        </button>
+        <div class="inspiration__note" id="inspiration-note" role="note" hidden>
+          <span class="mono">De onde veio a ideia</span>
+          <p>Quis que o site tivesse cara de casa de ração. Quem já entrou numa vai reconhecer as coisas: os botões são aquelas tarjetas de preço vermelhas, meio tortas, e as bordas entre uma parte e outra imitam a costura do saco de ração, com a letra grandona e apertada de estampa de saco.</p>
+          <p>As espécies que a loja atende viraram brinco de gado. A farmácia ganhou um receituário com anotação de caneta azul. O endereço e os horários estão numa tabela nutricional, com porção de uma visita. As fotos estão presas como no mural do balcão, com recadinho escrito à mão, e as marcas passam numa faixa de promoção.</p>
+          <p>O verde eu tirei do pasto atrás da cabra, o vermelho veio do logo e o creme é o papel do saco. E quem abre tudo é a cabra mastigando, porque no fundo é isso que a loja faz há 25 anos: cuida pra que todo bicho coma bem.</p>
+          <span class="hand">Bruno</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="stamp-btn whatsapp-float" href="https://wa.me/5511998900545?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Emp%C3%B3rio!" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp (abre em nova aba)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg><span class="whatsapp-float__label">WhatsApp</span></a>
 
   <!-- Classic deferred scripts (order matters): they share the window.Emporio
        namespace, so the page also works when opened directly from disk. -->
-  <script defer src="js/config.js?v=2026092606"></script>
-  <script defer src="js/utils.js?v=2026092606"></script>
-  <script defer src="js/goat-sequence.js?v=2026092606"></script>
-  <script defer src="js/hero.js?v=2026092606"></script>
-  <script defer src="js/scroll-effects.js?v=2026092606"></script>
-  <script defer src="js/extras.js?v=2026092606"></script>
-  <script defer src="js/main.js?v=2026092606"></script>
+  <script defer src="js/config.js?v=2026092607"></script>
+  <script defer src="js/utils.js?v=2026092607"></script>
+  <script defer src="js/goat-sequence.js?v=2026092607"></script>
+  <script defer src="js/hero.js?v=2026092607"></script>
+  <script defer src="js/scroll-effects.js?v=2026092607"></script>
+  <script defer src="js/extras.js?v=2026092607"></script>
+  <script defer src="js/main.js?v=2026092607"></script>
 </body>
 </html>

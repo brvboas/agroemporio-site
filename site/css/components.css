@@ -63,12 +63,66 @@
   .site-nav { display: none; }
   .site-header__actions { margin-left: auto; }
 }
+
+/* "Seções" menu: replaces the nav below 1080px (js/extras.js → initMobileMenu). */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  gap: 9px;
+  min-height: 38px;
+  padding: 6px 12px 5px 10px;
+  font: inherit;
+  color: var(--color-straw);
+  background: rgba(19, 23, 17, .25);
+  border: 2px solid currentColor;
+  cursor: pointer;
+}
+.menu-toggle__label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+.menu-toggle__bars { display: grid; gap: 4px; width: 18px; }
+.menu-toggle__bars i { display: block; height: 2px; background: currentColor; transition: transform .25s, opacity .2s; }
+.menu-toggle[aria-expanded="true"] .menu-toggle__bars i:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] .menu-toggle__bars i:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded="true"] .menu-toggle__bars i:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+@media (max-width: 1080px) { .menu-toggle { display: inline-flex; } }
+
+.site-header.menu-open { background: var(--color-pasture); }
+.mobile-menu {
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  padding: 6px var(--gutter) 26px;
+  background: var(--color-pasture);
+  border-bottom: 3px solid var(--color-red);
+  box-shadow: 0 18px 30px rgba(19, 23, 17, .35);
+  animation: menu-drop .25s ease-out;
+}
+.mobile-menu[hidden] { display: none; }
+.mobile-menu ol { margin: 0; padding: 0; list-style: none; }
+.mobile-menu li + li { border-top: 1px dashed rgba(237, 227, 201, .3); }
+.mobile-menu a {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 14px 0 12px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(30px, 8vw, 44px);
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-paper);
+}
+.mobile-menu a .mono { font-size: 12px; font-weight: 400; color: var(--color-sprout); }
+.mobile-menu a:hover, .mobile-menu a:focus-visible { color: #fff; }
+@keyframes menu-drop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .mobile-menu { animation: none; } }
 @media (max-width: 420px) {
   .site-header { gap: 10px; }
   .site-header__logo img { width: 44px; height: 44px; }
   .site-header__actions { gap: 8px; }
   .site-header .stamp-btn--small { gap: 6px; font-size: 13px; padding: 6px 9px 4px; }
   .site-header .stamp-btn--small svg { width: 13px; height: 13px; }
+  .menu-toggle { min-height: 34px; padding: 6px 8px; }
+  .menu-toggle__label { display: none; }
 }
 
 /* --------------------------------------------------------------------------
@@ -122,6 +176,20 @@
 /* Near the end of the page the button stops ('docks') in the gap between the
    storefront photo and the footer instead of covering the footer. */
 .whatsapp-float { translate: 0 var(--dock, 0px); }
+/* Phones: a square icon-only stamp, so it never covers headlines or captions. */
+@media (max-width: 600px) {
+  .whatsapp-float {
+    right: 16px;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    box-shadow: 4px 4px 0 var(--color-ink);
+  }
+  .whatsapp-float svg { width: 28px; height: 28px; }
+  .whatsapp-float__label { display: none; }
+}
 
 /* --------------------------------------------------------------------------
    Feed-sack stitches — zig-zag cut between sections.

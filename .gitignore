@@ -13,3 +13,6 @@ node_modules/
 # Local deploy settings
 .vercel/
 .netlify/
+
+# Cowork / Claude session outputs (screenshots, drafts)
+Claude outputs/

@@ -74,7 +74,7 @@ As you scroll, a goat chews in time with the page. The page then tells the store
 │   │   ├── goat-sequence.js  frame preloading, loader, canvas renderer
 │   │   ├── hero.js           hero scroll timeline
 │   │   ├── scroll-effects.js ticker, ghost words, collage, parallax, brands
-│   │   └── extras.js         greeting, reveal, goat cameo, pool waves, video autoplay, credit menu, header state
+│   │   └── extras.js         greeting, reveal, goat cameo, pool waves, video autoplay, credit menu, "Seções" menu, header state
 │   └── assets/
 │       ├── frames/goat/      g001.webp … g091.webp (hero image sequence)
 │       ├── video/            rooster and sparrow clips (.webm + .mp4) and their posters
@@ -249,13 +249,15 @@ The same text, in Portuguese and in Bruno's own voice, is in the footer behind t
 ## Accessibility & performance
 
 - **Wide screens:** past 1440px the layout stops growing. `--vw` in `css/tokens.css` is a 1vw that freezes at 14.4px, and `--gutter` widens so content stays in a centred 1440px column while section backgrounds run edge to edge.
-- **Floating WhatsApp button:** near the end of the page it docks in the gap between the storefront photo and the footer instead of covering the footer (`js/extras.js` → `dockWhatsapp`).
+- **Floating WhatsApp button:** near the end of the page it docks in the gap between the storefront photo and the footer instead of covering the footer (`js/extras.js` → `dockWhatsapp`). On phones (≤ 600px) it shrinks to a square icon-only stamp so it never covers headlines.
+- **Section menu:** below 1080px the header links move into a "Seções" menu (`js/extras.js` → `initMobileMenu`); it closes on a link tap, a tap outside or Escape.
+- **Landmarks:** the footer sits outside `<main>`, so it is the page's `contentinfo`. Links that open a new tab say so in their accessible name.
 
 - Respects `prefers-reduced-motion`: the hero shows a static frame and scroll animations are disabled.
-- Content is readable without JavaScript. Reveal animations only hide elements once `html.js` is set, and the loader is removed in `<noscript>`.
+- Content is readable without JavaScript. Reveal animations only hide elements once `html.js` is set (an inline script in `<head>` sets it before first paint), the loader is removed in `<noscript>`, and the opening collapses to one screen with just the greeting.
 - Visible keyboard focus, labelled navigation, `aria-label`s on canvases and videos, and decorative elements hidden from assistive technology.
 - Off-screen canvases (goat cameo, pool waves) pause while not visible.
-- Asset weight: about 5 MB of hero frames (preloaded behind the loader) and about 1 MB of video. Everything else lazy-loads.
+- Asset weight: about 5 MB of hero frames on desktop (preloaded behind the loader) and about 1 MB of video. Phones (≤ 820px) and "save data" connections load every other frame (46 of 91, about half the weight; `GOAT_FRAMES.lightStep` in `config.js`). Everything else lazy-loads.
 
 ## Credits
 

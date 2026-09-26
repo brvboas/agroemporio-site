@@ -17,6 +17,13 @@
     focus: { x: 0.5, y: 0.64 },
     /** Background painted behind the frame; must match --color-pasture. */
     background: '#1B3321',
+    /**
+     * Phones and "save data" connections download every `lightStep`-th frame
+     * only (46 of 91, ~2.4 MB instead of ~4.8 MB). Missing frames fall back to
+     * the nearest loaded one, so the goat still chews, just a little choppier.
+     */
+    lightStep: 2,
+    lightQuery: '(max-width: 820px)',
   };
 
   /**

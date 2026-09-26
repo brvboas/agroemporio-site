@@ -21,7 +21,7 @@
   const { preloadGoatFrames, GoatRenderer } = App.goatSequence;
   const { HeroTimeline } = App.hero;
   const { ScrollEffects } = App.scrollEffects;
-  const { setGreeting, initReveal, initGoatCameo, initPoolWaves, initVideos, initPopovers, initIntroAutoplay, updateChrome } = App.extras;
+  const { setGreeting, initReveal, initGoatCameo, initPoolWaves, initVideos, initPopovers, initMobileMenu, initIntroAutoplay, updateChrome } = App.extras;
 
   document.documentElement.classList.add('js');
 
@@ -40,6 +40,7 @@
   initGoatCameo(frames);
   initVideos();
   initPopovers();
+  initMobileMenu();
   initIntroAutoplay();
   if (!reducedMotion) initPoolWaves();
 

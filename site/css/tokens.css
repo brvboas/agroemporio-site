@@ -17,8 +17,9 @@
   /* Brand colours */
   --color-pasture:        #1B3321; /* main dark green background          */
   --color-pasture-light:  #274A2F; /* photo placeholders / hover surfaces  */
-  --color-sprout:         #7C9A4A; /* small accents on dark green          */
+  --color-sprout:         #86A552; /* small accents on dark green          */
   --color-red:            #CC0C0C; /* logo red: highlights, CTAs           */
+  --color-red-on-dark:    #EE3B34; /* logo red lifted for text on pasture green (contrast ≥ 3:1) */
   --color-red-dark:       #8F0909; /* text on straw (pet chapter)          */
   --color-straw:          #EDE3C9; /* light text on green, ticker bg       */
   --color-paper:          #F6F0DF; /* cards, frames, field chapter bg      */

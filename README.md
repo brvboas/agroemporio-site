@@ -155,6 +155,7 @@ The site is fully static, so there is no build command. Only the `site/` folder 
 | Custom `404.html` marked `noindex` | `site/404.html` |
 | Performance (a ranking factor): preloaded first frame, lazy-loaded images with explicit `width`/`height` (no layout shift), WebP everywhere, video posters, long cache headers for assets | throughout |
 | Clickable `tel:`, `mailto:` and WhatsApp links | contact section |
+| Hand-drawn map card linking to Google Maps (no embedded map: no third-party cookies, instant load) | contact section |
 
 ### After launch (outside the code, but it makes the biggest difference)
 

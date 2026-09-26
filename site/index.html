@@ -387,10 +387,40 @@
       <div class="contact-grid">
         <div>
           <h2 class="display reveal">Passa<br>aqui <span class="highlight">na loja.</span></h2>
-          <div class="goat-cameo reveal delay-1">
-            <div class="goat-cameo__frame"><canvas id="goat-cameo-canvas" width="380" height="380" role="img" aria-label="A cabra, ainda mastigando"></canvas></div>
-            <p class="serif">Ela fica aqui mastigando até você voltar.</p>
-          </div>
+          <!-- Hand-drawn map card: opens the store on Google Maps in a new tab.
+               Drawn inline (no embedded map) so it loads instantly, sets no
+               third-party cookies and matches the paper look of the page. -->
+          <a class="map-card reveal delay-1" href="https://www.google.com/maps/search/?api=1&amp;query=Emp%C3%B3rio%20Agropecu%C3%A1rio%2C%20Av.%20Dr.%20Octaviano%20Pereira%20Mendes%2C%20206%2C%20Itu%20-%20SP" target="_blank" rel="noopener" aria-label="Ver o Empório no Google Maps (abre em nova aba)">
+            <svg class="map-card__map" viewBox="0 0 600 230" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs>
+                <pattern id="map-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0v24" fill="none" stroke="#131711" stroke-opacity=".07"/></pattern>
+                <path id="map-avenue" d="M-20 196C120 170 210 128 300 118S470 70 620 30"/>
+              </defs>
+              <rect width="600" height="230" fill="url(#map-grid)"/>
+              <!-- green areas and the creek -->
+              <path d="M28 18h118l-14 70H20z" fill="#7C9A4A" fill-opacity=".35"/>
+              <path d="M430 150h150v70H452z" fill="#7C9A4A" fill-opacity=".35"/>
+              <path d="M-10 70C60 80 90 110 150 118s120 60 170 112" fill="none" stroke="#8FC3C7" stroke-width="10" stroke-linecap="round"/>
+              <!-- side streets -->
+              <g fill="none" stroke="#131711" stroke-opacity=".55" stroke-width="12" stroke-linecap="round">
+                <path d="M190 -10l40 250M392 -10l-22 250M520 -10l30 250M-10 40l620 70"/>
+              </g>
+              <g fill="none" stroke="#F6F0DF" stroke-width="8" stroke-linecap="round">
+                <path d="M190 -10l40 250M392 -10l-22 250M520 -10l30 250M-10 40l620 70"/>
+              </g>
+              <!-- the avenue -->
+              <use href="#map-avenue" fill="none" stroke="#131711" stroke-width="26" stroke-linecap="round"/>
+              <use href="#map-avenue" fill="none" stroke="#EDE3C9" stroke-width="20" stroke-linecap="round"/>
+              <text class="map-card__street map-card__street--wide"><textPath href="#map-avenue" startOffset="41%" text-anchor="end">Av. Dr. Octaviano P. Mendes</textPath></text>
+              <text class="map-card__street map-card__street--narrow"><textPath href="#map-avenue" startOffset="54%">Av. Dr. Octaviano P. Mendes</textPath></text>
+              <!-- dashed route to the pin -->
+              <path d="M60 222C120 200 170 175 230 165s50-30 70-47" fill="none" stroke="#CC0C0C" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+              <!-- compass -->
+              <g transform="translate(560 190)" fill="#131711"><path d="M0-18l6 18H-6z"/><text y="16" text-anchor="middle" font-size="13" font-weight="700" font-family="monospace">N</text></g>
+            </svg>
+            <span class="map-card__pin" aria-hidden="true"><svg viewBox="0 0 40 52"><path d="M20 51C20 51 38 30 38 19A18 18 0 0 0 2 19c0 11 18 32 18 32Z" fill="#CC0C0C" stroke="#131711" stroke-width="2.5"/><circle cx="20" cy="19" r="7" fill="#F6F0DF"/></svg><b>Empório</b></span>
+            <span class="map-card__cta">Abrir no Google Maps <span aria-hidden="true">↗</span></span>
+          </a>
           <div class="contact-actions reveal delay-2">
             <a class="stamp-btn" href="https://wa.me/5511998900545?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Emp%C3%B3rio!" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>Chamar no WhatsApp</a>
             <a class="stamp-btn stamp-btn--paper" href="tel:+551140224117"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Disk entrega</a>
@@ -401,6 +431,7 @@
           </dl>
         </div>
 
+        <div class="contact-side">
         <!-- Store facts styled as an "Informação nutricional" label. -->
         <aside class="store-label reveal delay-1" aria-label="Informações da loja">
           <h3>Informação da loja</h3>
@@ -417,6 +448,11 @@
           </table>
           <small>Atende Itu, Salto, Indaiatuba, Sorocaba, Porto Feliz, Cabreúva, Jundiaí e São Roque. Parcelamos no cartão.</small>
         </aside>
+          <div class="goat-cameo reveal delay-2">
+            <div class="goat-cameo__frame"><canvas id="goat-cameo-canvas" width="380" height="380" role="img" aria-label="A cabra, ainda mastigando"></canvas></div>
+            <p class="serif">Ela fica aqui mastigando até você voltar.</p>
+          </div>
+        </div>
       </div>
 
       <figure class="photo storefront reveal">

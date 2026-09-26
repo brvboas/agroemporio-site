@@ -51,8 +51,76 @@
 .contact-grid h2 { font-size: clamp(70px, 11vw, 190px); color: var(--color-paper); }
 .contact-grid h2 .highlight { font-size: .7em; }
 
+/* Hand-drawn map card linking to Google Maps. */
+.map-card {
+  position: relative;
+  display: block;
+  margin-top: 40px;
+  aspect-ratio: 600 / 230;
+  overflow: hidden;
+  color: var(--color-ink);
+  text-decoration: none;
+  background: var(--color-paper);
+  border: 3px solid var(--color-ink);
+  box-shadow: 8px 8px 0 var(--color-red);
+  transform: rotate(-1deg);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.map-card:hover, .map-card:focus-visible { transform: rotate(0) translate(-2px, -2px); box-shadow: 12px 12px 0 var(--color-red); }
+.map-card__map { display: block; width: 100%; height: 100%; }
+.map-card__street--narrow { display: none; }
+.map-card__street { font: 700 12px/1 var(--font-body); letter-spacing: .06em; text-transform: uppercase; fill: var(--color-ink); dominant-baseline: middle; }
+/* The pin sits where the avenue passes the middle of the card. */
+.map-card__pin {
+  position: absolute;
+  left: 50%;
+  top: 51%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -100%);
+  transform-origin: 50% 100%;
+  animation: map-pin-bob 2.4s ease-in-out infinite;
+}
+.map-card__pin svg { width: 34px; height: auto; filter: drop-shadow(2px 3px 0 rgba(19, 23, 17, .35)); }
+.map-card__pin b {
+  order: -1;
+  margin-bottom: 4px;
+  padding: 3px 8px 2px;
+  font: 800 14px/1 var(--font-display);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+  background: var(--color-ink);
+}
+@keyframes map-pin-bob { 50% { transform: translate(-50%, calc(-100% - 6px)); } }
+.map-card__cta {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  padding: 7px 12px 5px;
+  font: 800 15px/1 var(--font-display);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+  background: var(--color-red);
+  border: 2px solid var(--color-ink);
+  box-shadow: 3px 3px 0 var(--color-ink);
+}
+@media (max-width: 600px) {
+  .map-card { aspect-ratio: 2 / 1; }
+  /* The sides of the drawing are cropped here: the street name moves right of the pin. */
+  .map-card__street--wide { display: none; }
+  .map-card__street--narrow { display: inline; }
+  .map-card__cta { font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) { .map-card__pin { animation: none; } }
+
+/* Right column: store label, then the goat cameo under it. */
+.contact-side { display: grid; gap: 44px; }
+
 /* Small round window where the goat keeps chewing on its own. */
-.goat-cameo { display: flex; align-items: center; gap: 22px; margin-top: 44px; }
+.goat-cameo { display: flex; align-items: center; gap: 22px; }
 .goat-cameo__frame {
   flex: none;
   width: clamp(130px, 14vw, 190px);

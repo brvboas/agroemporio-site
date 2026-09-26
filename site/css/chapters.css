@@ -92,6 +92,8 @@
 
 .video-frame {
   position: relative;
+  justify-self: end;
+  width: min(100%, 38vh);
   margin: 40px 0 0;
   border: 10px solid var(--color-paper);
   outline: 2px solid var(--color-pasture);
@@ -113,15 +115,17 @@
   box-shadow: 3px 3px 0 rgba(0, 0, 0, .25);
 }
 
+/* Photos are sized by the viewport height as well as its width, so on wide or
+   short screens they never grow taller than the window or leave big gaps. */
 .field-photos {
   display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  align-items: end;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  align-items: center;
   gap: clamp(20px, 3vw, 48px);
-  padding: 56px var(--gutter) 0;
+  padding: 32px var(--gutter) 0;
 }
-.field-photos__truck { aspect-ratio: 16 / 9; }
-.field-photos__salt { aspect-ratio: 4 / 5; rotate: 2deg; }
+.field-photos__truck { width: min(100%, 96vh); aspect-ratio: 16 / 9; }
+.field-photos__salt { width: min(100%, 42vh); justify-self: center; aspect-ratio: 4 / 5; rotate: 2deg; }
 
 @media (max-width: 900px) {
   .field-grid, .field-photos { grid-template-columns: minmax(0, 1fr); }
@@ -130,6 +134,7 @@
   .video-frame .hand { left: 10px; bottom: 10px; font-size: 22px; }
   /* Salt photo overlaps the truck photo instead of stacking under it. */
   .field-photos { gap: 0; }
+  .field-photos__truck { width: 100%; }
   .field-photos__salt { position: relative; z-index: 2; width: 56%; justify-self: end; margin-top: -18%; }
   .field-photos__truck figcaption { top: 10px; bottom: auto; } /* keep it clear of the salt photo */
 }

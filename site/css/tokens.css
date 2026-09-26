@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Design tokens
+   --------------------------------------------------------------------------
+   Single source of truth for the brand palette, typefaces and spacing.
+   Every other stylesheet references these custom properties, so a colour or
+   font change only needs to happen here.
+
+   Palette origin:
+   - red        → sampled from the official Empório Agropecuário logo ring
+   - pasture    → sampled from the grass behind the goat in the hero video
+   - straw/paper→ feed-sack kraft tones that carry the "saco de ração" concept
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Brand colours */
+  --color-pasture:        #1B3321; /* main dark green background          */
+  --color-pasture-light:  #274A2F; /* photo placeholders / hover surfaces  */
+  --color-sprout:         #7C9A4A; /* small accents on dark green          */
+  --color-red:            #CC0C0C; /* logo red: highlights, CTAs           */
+  --color-red-dark:       #8F0909; /* text on straw (pet chapter)          */
+  --color-straw:          #EDE3C9; /* light text on green, ticker bg       */
+  --color-paper:          #F6F0DF; /* cards, frames, field chapter bg      */
+  --color-ink:            #131711; /* near-black text, hard shadows        */
+  --color-water:          #8FC3C7; /* pool block only                      */
+  --color-hero-fallback:  #3D5A2A; /* shown behind the canvas while loading */
+
+  /* Typefaces (loaded from Google Fonts in index.html) */
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif; /* feed-sack headlines */
+  --font-serif:   "DM Serif Display", Georgia, "Times New Roman", serif;       /* humorous asides     */
+  --font-body:    "Hanken Grotesk", "Segoe UI", Helvetica, Arial, sans-serif; /* running text        */
+  --font-mono:    "IBM Plex Mono", ui-monospace, Consolas, monospace;          /* labels / tags       */
+  --font-hand:    "Reenie Beanie", "Comic Sans MS", cursive;                   /* handwritten notes   */
+
+  /* Layout */
+  --gutter: clamp(16px, 4vw, 56px); /* horizontal page padding at every width */
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(.2, .7, .2, 1);
+  --ease-spring:   cubic-bezier(.3, 1.6, .5, 1);
+}

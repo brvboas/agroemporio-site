@@ -1,0 +1,17 @@
+# Cache rules for Cloudflare Pages and Netlify (Vercel uses vercel.json).
+# Images, frames and videos are cached for 30 days. If you replace a file and
+# need visitors to see it immediately, give the new file a different name.
+# HTML is not cached, so text changes show up at once.
+
+/assets/*
+  Cache-Control: public, max-age=2592000
+
+/css/*
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/js/*
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

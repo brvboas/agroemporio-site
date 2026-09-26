@@ -1,0 +1,143 @@
+/* ==========================================================================
+   Hero — the chewing goat.
+   --------------------------------------------------------------------------
+   The <section> is very tall (620vh); its stage is position:sticky, so the
+   stage stays on screen while the page scrolls. js/hero.js converts the
+   scroll progress (0 → 1) into: goat frame, headline lines, zoom, green
+   circular wipe, logo line-drawing and the final seal "stamp".
+   ========================================================================== */
+
+.hero { position: relative; height: 620vh; }
+
+.hero__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  /* First frame as a no-JS / pre-load fallback. */
+  background: var(--color-hero-fallback) url("../assets/frames/goat/g001.webp") center 60% / cover no-repeat;
+}
+.hero__canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* Darkens the edges so the headlines stay legible over the video. */
+.hero__vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 45%, transparent 35%, rgba(12, 22, 14, .55) 100%),
+    linear-gradient(to top, rgba(12, 22, 14, .75), transparent 45%);
+}
+
+/* --------------------------------------------------------------------------
+   Headline lines (each fades in/out on its own scroll window)
+   -------------------------------------------------------------------------- */
+.hero__line { position: absolute; max-width: min(46vw, 640px); will-change: transform, opacity; }
+.hero__line .display { font-size: clamp(56px, 10vw, 168px); color: var(--color-paper); text-shadow: 0 4px 30px rgba(0, 0, 0, .35); }
+.hero__line .serif {
+  display: block;
+  margin-top: 14px;
+  font-size: clamp(22px, 2.3vw, 36px);
+  color: var(--color-paper);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .5);
+}
+.hero__line .mono { display: block; margin-bottom: 16px; color: var(--color-straw); opacity: .9; }
+
+/* Only the first line is visible before any scroll. */
+.js .hero__line:not(.hero__line--0) { opacity: 0; }
+
+.hero__line--0 { left: var(--gutter); bottom: 12vh; }
+.hero__line--1 { left: var(--gutter); top: 20vh; }
+.hero__line--2 { right: var(--gutter); top: 16vh; text-align: right; }
+.hero__line--3 { left: var(--gutter); bottom: 10vh; }
+.hero__line--4 { right: var(--gutter); bottom: 11vh; text-align: right; max-width: min(44vw, 600px); }
+.hero__line--4 .display { font-size: clamp(46px, 7vw, 118px); }
+
+/* "Scroll slowly, she is chewing" hint. */
+.scroll-hint {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 5vh;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-straw);
+}
+.scroll-hint i {
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: var(--color-straw);
+  transform-origin: top;
+  animation: scroll-hint-drop 1.6s ease-in-out infinite;
+}
+@keyframes scroll-hint-drop {
+  0%   { transform: scaleY(0); }
+  50%  { transform: scaleY(1); }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   Outro: green wipe → logo animals drawn → seal stamped → brand line
+   -------------------------------------------------------------------------- */
+.hero__wipe {
+  position: absolute;
+  inset: 0;
+  background: var(--color-pasture);
+  clip-path: circle(0% at 50% 62%);
+}
+/* Faint dotted pasture texture. */
+.hero__wipe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .18;
+  background-image: radial-gradient(var(--color-sprout) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+}
+
+.hero__animals {
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  width: min(74vw, 860px);
+  transform: translate(-50%, -50%);
+  overflow: visible;
+}
+.hero__animals path { fill: var(--color-straw); fill-opacity: 0; stroke: var(--color-straw); stroke-width: 2.4; }
+
+.hero__seal {
+  position: absolute;
+  top: 14vh;
+  right: calc(var(--gutter) + 2vw);
+  width: clamp(120px, 15vw, 210px);
+  height: auto;
+  aspect-ratio: 1;
+  opacity: 0;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, .35));
+}
+
+.hero__outro { position: absolute; left: 0; right: 0; bottom: 9vh; padding-inline: var(--gutter); text-align: center; opacity: 0; }
+.hero__outro .display { font-size: clamp(40px, 6vw, 96px); color: var(--color-paper); }
+.hero__outro .serif { display: block; margin-top: 10px; font-size: clamp(20px, 2vw, 30px); color: var(--color-straw); }
+
+/* --------------------------------------------------------------------------
+   Phones: goat on top (drawn by js), text stacked at the bottom
+   -------------------------------------------------------------------------- */
+@media (max-width: 720px) {
+  .hero__line { max-width: none; left: var(--gutter) !important; right: var(--gutter) !important; text-align: left !important; }
+  .hero__line--1 { top: auto; bottom: 14vh; }
+  /* "Do pasto…" and "…ao sofá da sala" are on screen together: stack them. */
+  .hero__line--2 { top: auto; bottom: calc(9vh + 200px); }
+  .hero__line--2 .serif { display: none; }
+  .hero__line--4 { bottom: 12vh; }
+  .hero__seal { top: 12vh; right: var(--gutter); }
+  .hero__animals { top: 40%; width: 88vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-hint i { animation: none; }
+  .hero { height: auto; }
+  .hero__stage { position: relative; height: 100svh; }
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página não encontrada | Empório Agropecuário</title>
+  <!-- Not-found pages must not be indexed. -->
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#1B3321">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=DM+Serif+Display:ital@1&family=IBM+Plex+Mono:wght@500&display=swap">
+  <!-- Absolute paths: this page can be served from any URL depth. -->
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <style>
+    /* Page-specific layout: a single centred message on pasture green. */
+    .not-found {
+      min-height: 100svh;
+      display: grid;
+      align-content: center;
+      gap: 22px;
+      padding: 60px var(--gutter);
+    }
+    .not-found .display { font-size: clamp(64px, 12vw, 180px); color: var(--color-paper); }
+    .not-found .serif { font-size: clamp(22px, 2.4vw, 34px); margin: 0; }
+    .not-found .stamp-btn { justify-self: start; }
+  </style>
+</head>
+<body>
+  <main class="not-found">
+    <span class="mono">Erro 404 · Empório Agropecuário</span>
+    <h1 class="display">Essa página<br>a cabra <span class="highlight">comeu.</span></h1>
+    <p class="serif">O endereço não existe mais, mas a loja continua no mesmo lugar.</p>
+    <a class="stamp-btn" href="/">Voltar para o início</a>
+  </main>
+</body>
+</html>

@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://agroemporio.com/sitemap.xml
+Sitemap: https://agroemporio.com.br/sitemap.xml

@@ -3,11 +3,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://agroemporio.com/</loc>
-    <lastmod>2026-09-26</lastmod>
-    <image:image><image:loc>https://agroemporio.com/assets/img/og-image.jpg</image:loc></image:image>
-    <image:image><image:loc>https://agroemporio.com/assets/img/photos/pharmacy-shelves.webp</image:loc></image:image>
-    <image:image><image:loc>https://agroemporio.com/assets/img/photos/dog.webp</image:loc></image:image>
-    <image:image><image:loc>https://agroemporio.com/assets/img/photos/storefront.webp</image:loc></image:image>
+    <loc>https://agroemporio.com.br/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <image:image><image:loc>https://agroemporio.com.br/assets/img/og-image.jpg</image:loc></image:image>
+    <image:image><image:loc>https://agroemporio.com.br/assets/img/photos/pharmacy-shelves.webp</image:loc></image:image>
+    <image:image><image:loc>https://agroemporio.com.br/assets/img/photos/dog.webp</image:loc></image:image>
+    <image:image><image:loc>https://agroemporio.com.br/assets/img/photos/storefront.webp</image:loc></image:image>
   </url>
 </urlset>

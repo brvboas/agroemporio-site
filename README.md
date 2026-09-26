@@ -6,7 +6,7 @@ As you scroll, a goat chews in time with the page. The page then tells the store
 
 > The site's copy is in Brazilian Portuguese. Code, comments and documentation are in English.
 >
-> **Hosting:** the live site is hosted on [Cloudflare Pages](https://pages.cloudflare.com/), serving the `site/` folder.
+> **Hosting:** the live site is hosted on Cloudflare (Workers static assets), serving the `site/` folder. The main address is **https://agroemporio.com.br**.
 
 ---
 
@@ -16,6 +16,7 @@ As you scroll, a goat chews in time with the page. The page then tells the store
 - [Tech stack](#tech-stack)
 - [Project structure](#project-structure)
 - [Running locally](#running-locally)
+- [Domains](#domains)
 - [Deploying](#deploying)
 - [SEO](#seo)
 - [Editing content](#editing-content)
@@ -111,6 +112,16 @@ npx serve site
 
 The **Live Server** extension for VS Code also works: right-click `site/index.html` → *Open with Live Server*.
 
+## Domains
+
+| Domain | Registrar | Role |
+|---|---|---|
+| **agroemporio.com.br** | Registro.br | **Main address.** Custom domain of the Cloudflare Worker (apex + `www`). |
+| agroemporio.com | Hostinger (moved from Wix) | 301 redirect to agroemporio.com.br |
+| emporioagropecuario.com.br, petshopitu.com.br, agropecuariaitu.com.br, racaoitu.com.br | Registro.br | 301 redirect to agroemporio.com.br |
+
+All DNS lives in **Cloudflare** (one zone per domain). Each redirect domain has two proxied placeholder records (`A @` and `A www` → `192.0.2.1`) and one Redirect Rule: *All incoming requests* → Dynamic `concat("https://agroemporio.com.br", http.request.uri.path)`, 301, preserve query string. `loja.agroemporio.com` and `test.agroemporio.com` are kept as DNS-only CNAMEs to an old Tray store.
+
 ## Deploying
 
 The site is fully static, so there is no build command. Only the `site/` folder is published.
@@ -161,14 +172,14 @@ The site is fully static, so there is no build command. Only the `site/` folder 
 ### After launch (outside the code, but it makes the biggest difference)
 
 1. **Google Business Profile.** Claim or update the store's profile with the same name, address and phone as the site (they must match exactly), add photos and link the website. For a local store this matters more than anything else.
-2. **Google Search Console.** Verify the domain, submit `https://agroemporio.com/sitemap.xml`, and check *Enhancements* for the structured data.
+2. **Google Search Console.** Verify the domain, submit `https://agroemporio.com.br/sitemap.xml`, and check *Enhancements* for the structured data.
 3. **Test the structured data** at <https://search.google.com/test/rich-results>.
 4. **Check the social profiles** listed in `sameAs` (Instagram and Facebook `@emporioagropecuarioitu`, taken from the storefront sign).
 5. **Reviews.** Ask customers to review the store on Google.
 
-### If the domain is not `agroemporio.com`
+### If the domain is not `agroemporio.com.br`
 
-Search and replace `https://agroemporio.com` in `site/index.html`, `site/robots.txt` and `site/sitemap.xml`.
+Search and replace `https://agroemporio.com.br` in `site/index.html`, `site/robots.txt` and `site/sitemap.xml`.
 
 ## Editing content
 
